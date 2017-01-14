@@ -85,24 +85,41 @@
 
 
 <meta name="description" content="Kubernetes基本概念
-Kubernetes
+Kubernetes总体概览
 
-kubeadm init">
+
+
+Pod
+
+Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。
+为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Do">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes">
 <meta property="og:url" content="http://yoursite.com/2017/01/10/Kubernetes/index.html">
 <meta property="og:site_name" content="Tunny Blog">
 <meta property="og:description" content="Kubernetes基本概念
-Kubernetes
+Kubernetes总体概览
 
-kubeadm init">
-<meta property="og:updated_time" content="2017-01-10T12:51:12.000Z">
+
+
+Pod
+
+Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。
+为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Do">
+<meta property="og:image" content="http://img.blog.csdn.net/20141030000023786?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmdqdW4yOTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2017-01-14T11:10:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes">
 <meta name="twitter:description" content="Kubernetes基本概念
-Kubernetes
+Kubernetes总体概览
 
-kubeadm init">
+
+
+Pod
+
+Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。
+为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Do">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20141030000023786?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmdqdW4yOTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
 
@@ -325,10 +342,60 @@ kubeadm init">
 
       
         <h1 id="Kubernetes基本概念"><a href="#Kubernetes基本概念" class="headerlink" title="Kubernetes基本概念"></a>Kubernetes基本概念</h1><blockquote>
-<p>Kubernetes</p>
+<p>Kubernetes总体概览</p>
 </blockquote>
-<pre><code>kubeadm init
-</code></pre>
+<p><img src="http://img.blog.csdn.net/20141030000023786?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmdqdW4yOTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="总体概览图"></p>
+<blockquote>
+<p>Pod</p>
+</blockquote>
+<p>Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。</p>
+<p>为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Docker容器之间的通信受到Docker网络机制的限制。在Docker的世界中，一个容器需要通过link方式才能访问另一个容器提供的服务（端口）。大量容器之间的link将是一个非常繁重的工作。通过Pod的概念将多个容器组合在一个虚拟的“主机”内，可以实现容器之间仅需通过Localhost就能相互通信了。</p>
+<p>一个Pod中的应用容器共享同一组资源：</p>
+<p>  （1）PID命名空间：Pod中的不同应用程序可以看见其他应用程序的进程ID</p>
+<p>  （2）网络命名空间：Pod中的多个容器能访问同一个IP和端口范围</p>
+<p>  （3）IPC命名空间：Pod中的多个容器能够使用SystemV IPC或POSIX消息队列进行通信。</p>
+<p>  （4）UTS命名空间：Pod中的多个容器共享一个主机名</p>
+<p>  （5）Volumes（共享存储卷）：Pod中的各个容器可以访问在Pod级别定义的Volumes</p>
+<p>不建议在k8s的一个pod内运行相同应用的多个实例。也就是说一个Pod内不要运行2个或2个以上相同的镜像，因为容易造成端口冲突，而且Pod内的容器都是在同一个Node上的</p>
+<p> 一个Pod包含一个或者多个容器。</p>
+<p>Pod的YAML 描述方式:</p>
+<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: &quot;nginx&quot;
+</code></pre><p>运行如下命令就会创建Pod：</p>
+<pre><code>kubectl create -f ./nginx.yaml
+</code></pre><p>运行如下命令可以查看Pod状态：</p>
+<pre><code>kubectl get pod
+</code></pre><blockquote>
+<p>Relication Controller</p>
+</blockquote>
+<p>Replication 是复制的意思，用来解决Pod的线性扩容缩容问题，Replication Controller可以创建一个pod的多个副本，并且可以保证集群中该Pod的副本数量保持平衡。例如副本数量规定为10，如果某个pod挂了，数量变为9，那么Replication Controller会自动创建一个Pod，恢复到10个副本的水平。 多个副本可以在不同的Node中。</p>
+<p>Replication Controller的YAML  描述方式:</p>
+<pre><code>apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx
+spec:
+  relicas: 2
+  template:
+    metada:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+</code></pre><blockquote>
+<p>Service</p>
+</blockquote>
+
       
     </div>
 
