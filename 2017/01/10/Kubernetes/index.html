@@ -107,7 +107,7 @@ Pod
 Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。
 为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Do">
 <meta property="og:image" content="http://img.blog.csdn.net/20141030000023786?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmdqdW4yOTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2017-01-15T02:16:48.000Z">
+<meta property="og:updated_time" content="2017-01-15T12:24:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes">
 <meta name="twitter:description" content="Kubernetes基本概念
@@ -351,11 +351,13 @@ Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容�
 <p>Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。</p>
 <p>为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Docker容器之间的通信受到Docker网络机制的限制。在Docker的世界中，一个容器需要通过link方式才能访问另一个容器提供的服务（端口）。大量容器之间的link将是一个非常繁重的工作。通过Pod的概念将多个容器组合在一个虚拟的“主机”内，可以实现容器之间仅需通过Localhost就能相互通信了。</p>
 <p>一个Pod中的应用容器共享同一组资源：</p>
-<p>  （1）PID命名空间：Pod中的不同应用程序可以看见其他应用程序的进程ID</p>
-<p>  （2）网络命名空间：Pod中的多个容器能访问同一个IP和端口范围</p>
-<p>  （3）IPC命名空间：Pod中的多个容器能够使用SystemV IPC或POSIX消息队列进行通信。</p>
-<p>  （4）UTS命名空间：Pod中的多个容器共享一个主机名</p>
-<p>  （5）Volumes（共享存储卷）：Pod中的各个容器可以访问在Pod级别定义的Volumes</p>
+<ul>
+<li>PID命名空间：Pod中的不同应用程序可以看见其他应用程序的进程ID</li>
+<li>网络命名空间：Pod中的多个容器能访问同一个IP和端口范围</li>
+<li>IPC命名空间：Pod中的多个容器能够使用SystemV IPC或POSIX消息队列进行通信。</li>
+<li>UTS命名空间：Pod中的多个容器共享一个主机名</li>
+<li>Volumes（共享存储卷）：Pod中的各个容器可以访问在Pod级别定义的Volumes</li>
+</ul>
 <p>不建议在k8s的一个pod内运行相同应用的多个实例。也就是说一个Pod内不要运行2个或2个以上相同的镜像，因为容易造成端口冲突，而且Pod内的容器都是在同一个Node上的</p>
 <p> 一个Pod包含一个或者多个容器。</p>
 <p>Pod的YAML 描述方式:</p>
@@ -375,7 +377,7 @@ spec:
 <p>Relication Controller</p>
 </blockquote>
 <p>Replication 是复制的意思，用来解决Pod的线性扩容缩容问题，Replication Controller可以创建一个pod的多个副本，并且可以保证集群中该Pod的副本数量保持平衡。例如副本数量规定为10，如果某个pod挂了，数量变为9，那么Replication Controller会自动创建一个Pod，恢复到10个副本的水平。 多个副本可以在不同的Node中。</p>
-<p>Replication Controller的YAML  描述方式:</p>
+<p>Replication Controller的YAML描述方式:</p>
 <pre><code>apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -395,32 +397,156 @@ spec:
 </code></pre><blockquote>
 <p>Replica Set</p>
 </blockquote>
-<p>Replica Set是新一代RC，提供同样的高可用能力，区别主要在于RS能够支持更多匹配模式，RS对象一般不单独使用，面是作为部署的理想状态参数使用</p>
+<p>Replica Set是新一代RC，提供同样的高可用能力，区别主要在于RS能够支持更多匹配模式，RS对象一般不单独使用，而是作为部署的理想状态参数使用</p>
 <blockquote>
 <p>Deployment</p>
 </blockquote>
-<p>部署表示用户对K8S集群的一次更新操作，部署是一个比RS应用模式更广的API对象，可以是创建一个新的服务，更新一个新的服务，也可以是滚动升级一个服务。滚动升级一个服务，实际是创建一个新的RS，然后逐渐将新RS中副本数增加到理想状态，将旧RS中的副本数减少到0的复合操作，这样一个复合操作用一个RS很难去描述，所以用一个更通过的Deployment来描述，以K8S的发展方向，未来对所有长期伺服型的业务的管理，都会通过Deployment来管理</p>
-<blockquote>
+<p>部署表示用户对K8S集群的一次更新操作，部署是一个比RS应用模式更广的API对象，可以是创建一个新的服务，更新一个新的服务，也可以是滚动升级一个服务。滚动升级一个服务，实际是创建一个新的RS，然后逐渐将新RS中副本数增加到理想状态，将旧RS中的副本数减少到0的复合操作，这样一个复合操作用一个RS很难去描述，所以用一个更通用的Deployment来描述，以K8S的发展方向，未来对所有长期伺服型的业务的管理，都会通过Deployment来管理。</p>
+<p>Deployment的YAML描述方式</p>
+<pre><code>apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 400m
+</code></pre><blockquote>
 <p>Service</p>
 </blockquote>
 <p>RC，RS和Deployment只是保证了支撑服务的微服务Pod数量，但是没有解决如何访问这些服务的问题，一个Pod只是一个运行服务的实例，随时可能在一个节点上停止，在另一个节点以一个新的IP启动一个新的Pod，因此不能以确定的IP和端口号提供服务。要稳定地提供服务需要服务发现和负载均衡能力，服务发现完成的工作是针对客户端访问的服务，找到对应的后端服务实例。在K8S集群中，客户端需要访问的服务就是Service对象。每个Service会对应一个集群内部有效的虚拟IP，集群内部通过虚拟IP访问一个服务。在K8S集群中微服务的负载均衡是由Kube-proxy实现的。Kube-proxy是K8S集群内部的负载均衡器，它是一个分布式代理服务器，在K8S的每个节点都有一个，这个设计体现了它的伸缩性优势，需要访问的服务节点越多，提供负载均衡能力的Kube-proxy就越多，高可用节点也随之增多。与之相比，我们平时在服务器端做个反向代理做负载均衡，还要进一步解决反向代理的负载均衡和高可用问题。</p>
-<blockquote>
+<p>Service的YAML描述方式</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30088
+</code></pre><blockquote>
 <p>DaemonSet</p>
 </blockquote>
 <p>长期伺服型和批处理型服务的核心在业务应用，可能有些节点运行多个同类业务的Pod,有些节点上又没有这类Pod运行，而后台支撑型服务的核心关注点在K8S集群中的节点（物理机或者虚拟机），要保证每个节点上都有一个此类Pod运行，节点可能是所有集群节点也可能是通过nodeSelector选定的一些特定节点。典型的后台支撑服务包括，存储、日志和监控等在每个节点上支持K8S集群运行的服务。</p>
-<blockquote>
+<p>DaemonSet的YAML描述方式</p>
+<pre><code>apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: tomcat-ds
+spec:
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat
+        image: tomcat:8.0.30-jre8
+        ports:
+        - containerPort: 8080
+</code></pre><blockquote>
 <p>PetSet</p>
 </blockquote>
 <p>K8S在1.3版本里发布了Alpha版本的PetSet功能，RC和RS主要控制提供无状态服务的，其所控制的Pod的名字是随机设置的，一个Pod出故障了就被丢弃掉，在另一个地方重启一个新的Pod,名字变了，名字和启动在哪里不重要，重要的是Pod数；而PetSet是用来控制有状态服务，PetSet中每个Pod的名字都是事先确定的，不能更改。PetSet中Pod的名字的作用代表与Pod对应的状态。<br>对于RC和RS中的Pod,一般不挂载存储或者挂载共享存储，保存的是所有Pod共享的状态，对于PetSet中的Pod,每个Pod挂载自己独立的存储，如果一个Pod出现故障，从其他节点启动一个同样名字的Pod,要挂载上原来Pod的存储继续以它的状态提供服务。</p>
-<blockquote>
+<p>PetSet的YAML描述方式</p>
+<pre><code>apiVersion: apps/v1alpha1
+kind: PetSet
+metadata:
+  name: web
+spec:
+  serviceName: &quot;nginx&quot;
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+      annotations:
+        pod.alpha.kubernetes.io/initialized: &quot;true&quot;
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: nginx
+        image: gcr.io/google_containers/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+      annotations:
+        volume.alpha.kubernetes.io/storage-class: anything
+    spec:
+      accessModes: [ &quot;ReadWriteOnce&quot; ]
+      resources:
+        requests:
+          storage: 1Gi
+</code></pre><blockquote>
 <p>Volume</p>
 </blockquote>
 <p>K8S集群中的存储卷跟Docker的存储卷有些类似，只不过Docker的存储卷作用范围为一个容器，而K8S的存储卷生命周期和作用范围是一个Pod。每一个Pod中声明的存储卷由Pod中所有容器共享，K8S支持多种存储卷类型，例如GlusterFS和Ceph，以及主机本地目录和NFS。K8S还支持使用Persistent Volume Claim即PVC这种逻辑存储，使用这种存储可以忽略后台的实际存储技术，而将有关存储实际技术的配置交给存储管理员通过Persistent Volume来配置。</p>
 <blockquote>
 <p>Persistent Volume和Persistent Volume Claim</p>
 </blockquote>
-<p>PV和PVC使用得K8S集群具备了存储的逻辑抽象能力，使得在配置Pod的逻辑里可以忽略对实际后台存储技术的配置。而把这项配置工作交给PV的配置者，即集群的管理者。存储的PV和PVC的这种关系，跟计算的Node和Pod的关系非常相似，PV和Node是资源的提供者，根据集群的基础变化而变化，由K8S集群管理者配置； PVC和Pod是资源的使用者，根据业务服务的需求变化而变化，有K8S集群的使用者即服务的管理员来配置。</p>
-
+<p>PV和PVC使用得K8S集群具备了存储的逻辑抽象能力，使得在配置Pod的逻辑里可以忽略对实际后台存储技术的配置。而把这项配置工作交给PV的配置者，即集群的管理者。存储的PV和PVC的这种关系，跟计算的Node和Pod的关系非常相似，PV和Node是资源的提供者，根据集群的基础变化而变化，由K8S集群管理者配置； PVC和Pod是资源的使用者，根据业务服务的需求变化而变化，有K8S集群的使用者即服务的管理员来配置。PVC未强制跟PV进行关联，当未找到合适的PV前PVC一直会处于绑定状态，PV和PVC遵循如下生命周期：</p>
+<ul>
+<li>供应准备：管理员在集群中创建多个PV供用户使用</li>
+<li>绑定：用户创建PVC并指定需要的资源和访问模式，在找到可用PV之前，PVC会保持未绑定状态</li>
+<li>使用：用户可在pod中像volume一样使用PVC</li>
+<li>释放：用户删除PVC来回收存储资源，PV将变成released状态，由于还保留着之前的数据，这些数据需要根据不同的策略来处理，否则这些存储资源无法被其他PVC使用</li>
+<li>回收：PV可设置三种回收策略 保留（Retail），回收(Recycle)和删除（Delete）<ul>
+<li>保留策略允许人工处理保留的数据</li>
+<li>删除策略将删除PV和外部关联的存储资源，需要插件支持</li>
+<li>回收策略将招待清除操作，之后可以被新的PVC使用，需要插件支持</li>
+</ul>
+</li>
+</ul>
+<p>PV的YAML描述</p>
+<pre><code>apiVersion: &quot;v1&quot;
+kind: &quot;PersistentVolume&quot;
+metadata:
+ name: &quot;gluster-default-volume&quot;
+spec:
+ capacity:
+    storage: &quot;8Gi&quot;
+ accessModes:
+    - &quot;ReadWriteMany&quot;
+ glusterfs:
+    endpoints: &quot;glusterfs-cluster&quot;
+    path: &quot;gluster_vol&quot;
+    readOnly: false
+ persistentVolumeReclaimPolicy: &quot;Recycle&quot;
+</code></pre><p>PVC的YAMLr描述</p>
+<pre><code>apiVersion: &quot;v1&quot;
+kind: &quot;PersistentVolumeClaim&quot;
+metadata:
+ name: &quot;glusterfs-claim&quot;
+spec:
+ accessModes:
+    - &quot;ReadWriteMany&quot;
+ resources:
+    requests:
+     storage: &quot;8Gi&quot;
+</code></pre>
       
     </div>
 
@@ -442,6 +568,22 @@ spec:
     <footer class="post-footer">
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/01/15/Kubernetes集群搭建/" rel="prev" title="Kubernetes集群搭建">
+                Kubernetes集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -508,7 +650,7 @@ spec:
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
