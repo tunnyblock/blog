@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -84,13 +84,34 @@
 
 
 
+<meta name="description" content="kubeadm
+Kubernetes 1.4版本之后提供了一个快速搭建集群的工具kubeadm
+前期准备
+
+1台或者更多Ubuntu16.04+, CentOS 7或者HypriotOS v1.0.01+ 机器
+1G内存
+机器间网络通信正常">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes集群搭建">
 <meta property="og:url" content="http://yoursite.com/2017/01/15/Kubernetes集群搭建/index.html">
 <meta property="og:site_name" content="Tunny Blog">
-<meta property="og:updated_time" content="2017-01-15T02:22:04.000Z">
+<meta property="og:description" content="kubeadm
+Kubernetes 1.4版本之后提供了一个快速搭建集群的工具kubeadm
+前期准备
+
+1台或者更多Ubuntu16.04+, CentOS 7或者HypriotOS v1.0.01+ 机器
+1G内存
+机器间网络通信正常">
+<meta property="og:updated_time" content="2017-01-17T13:16:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes集群搭建">
+<meta name="twitter:description" content="kubeadm
+Kubernetes 1.4版本之后提供了一个快速搭建集群的工具kubeadm
+前期准备
+
+1台或者更多Ubuntu16.04+, CentOS 7或者HypriotOS v1.0.01+ 机器
+1G内存
+机器间网络通信正常">
 
 
 
@@ -104,7 +125,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -127,7 +148,7 @@
   <title> Kubernetes集群搭建 | Tunny Blog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -184,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
           </a>
         </li>
       
@@ -194,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -204,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -274,7 +295,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-15T10:22:04+08:00">
                 2017-01-15
@@ -312,7 +333,15 @@
       
 
       
-        
+        <h4 id="kubeadm"><a href="#kubeadm" class="headerlink" title="kubeadm"></a>kubeadm</h4><hr>
+<p>Kubernetes 1.4版本之后提供了一个快速搭建集群的工具<strong>kubeadm</strong></p>
+<h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><hr>
+<ul>
+<li>1台或者更多Ubuntu16.04+, CentOS 7或者HypriotOS v1.0.01+ 机器</li>
+<li>1G内存</li>
+<li>机器间网络通信正常</li>
+</ul>
+
       
     </div>
 
@@ -393,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/blog/images/avatar.gif"
@@ -408,7 +446,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -437,6 +475,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kubeadm"><span class="nav-number">1.</span> <span class="nav-text">kubeadm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前期准备"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -460,11 +514,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
