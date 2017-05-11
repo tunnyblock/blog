@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Tunny,Techonoligy" />
+  <meta name="keywords" content="Kubernetes," />
 
 
 
@@ -107,7 +107,7 @@ Pod
 Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容器，类似于豌豆荚的概念。一个Pod可以被一个容器化的环境看作应用层的“逻辑宿主机”（Logical Host).一个Pod中的多个容器应用通常是紧耦合的。Pod在Node上被创建、启动或者销毁。
 为什么k8s使用Pod在容器之上再封装一层呢？一个很重要的原因是Do">
 <meta property="og:image" content="http://img.blog.csdn.net/20141030000023786?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmdqdW4yOTE1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:updated_time" content="2017-01-15T12:24:03.000Z">
+<meta property="og:updated_time" content="2017-05-11T15:13:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes">
 <meta name="twitter:description" content="Kubernetes基本概念
@@ -361,15 +361,8 @@ Pod是k8s的最基本的操作单元，包含一个或多个紧密相关的容�
 <p>不建议在k8s的一个pod内运行相同应用的多个实例。也就是说一个Pod内不要运行2个或2个以上相同的镜像，因为容易造成端口冲突，而且Pod内的容器都是在同一个Node上的</p>
 <p> 一个Pod包含一个或者多个容器。</p>
 <p>Pod的YAML 描述方式:</p>
-<pre><code>apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-spec:
-  containers:
-  - name: nginx
-    image: &quot;nginx&quot;
-</code></pre><p>运行如下命令就会创建Pod：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> Pod</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> nginx</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  containers:</span></div><div class="line"><span class="attr">  - name:</span> nginx</div><div class="line"><span class="attr">    image:</span> <span class="string">"nginx"</span></div></pre></td></tr></table></figure>
+<p>运行如下命令就会创建Pod：</p>
 <pre><code>kubectl create -f ./nginx.yaml
 </code></pre><p>运行如下命令可以查看Pod状态：</p>
 <pre><code>kubectl get pod
@@ -378,23 +371,8 @@ spec:
 </blockquote>
 <p>Replication 是复制的意思，用来解决Pod的线性扩容缩容问题，Replication Controller可以创建一个pod的多个副本，并且可以保证集群中该Pod的副本数量保持平衡。例如副本数量规定为10，如果某个pod挂了，数量变为9，那么Replication Controller会自动创建一个Pod，恢复到10个副本的水平。 多个副本可以在不同的Node中。</p>
 <p>Replication Controller的YAML描述方式:</p>
-<pre><code>apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: nginx
-spec:
-  relicas: 2
-  template:
-    metada:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
-</code></pre><blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> ReplicationController</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> nginx</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  relicas:</span> <span class="number">2</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metada:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> nginx</div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">      - name:</span> nginx</div><div class="line"><span class="attr">        image:</span> nginx</div><div class="line"><span class="attr">        ports:</span></div><div class="line"><span class="attr">        - containerPort:</span> <span class="number">80</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>Replica Set</p>
 </blockquote>
 <p>Replica Set是新一代RC，提供同样的高可用能力，区别主要在于RS能够支持更多匹配模式，RS对象一般不单独使用，而是作为部署的理想状态参数使用</p>
@@ -402,105 +380,23 @@ spec:
 <p>Deployment</p>
 </blockquote>
 <p>部署表示用户对K8S集群的一次更新操作，部署是一个比RS应用模式更广的API对象，可以是创建一个新的服务，更新一个新的服务，也可以是滚动升级一个服务。滚动升级一个服务，实际是创建一个新的RS，然后逐渐将新RS中副本数增加到理想状态，将旧RS中的副本数减少到0的复合操作，这样一个复合操作用一个RS很难去描述，所以用一个更通用的Deployment来描述，以K8S的发展方向，未来对所有长期伺服型的业务的管理，都会通过Deployment来管理。</p>
-<p>Deployment的YAML描述方式</p>
-<pre><code>apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.7.9
-        ports:
-        - containerPort: 80
-        resources:
-          requests:
-            cpu: 400m
-</code></pre><blockquote>
+<p>Deployment的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: Deployment</div><div class="line">metadata:</div><div class="line">  name: nginx-deployment</div><div class="line">spec:</div><div class="line">  replicas: 2</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: nginx</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: nginx</div><div class="line">        image: nginx:1.7.9</div><div class="line">        ports:</div><div class="line">        - containerPort: 80</div><div class="line">        resources:</div><div class="line">          requests:</div><div class="line">            cpu: 400m</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>Service</p>
 </blockquote>
 <p>RC，RS和Deployment只是保证了支撑服务的微服务Pod数量，但是没有解决如何访问这些服务的问题，一个Pod只是一个运行服务的实例，随时可能在一个节点上停止，在另一个节点以一个新的IP启动一个新的Pod，因此不能以确定的IP和端口号提供服务。要稳定地提供服务需要服务发现和负载均衡能力，服务发现完成的工作是针对客户端访问的服务，找到对应的后端服务实例。在K8S集群中，客户端需要访问的服务就是Service对象。每个Service会对应一个集群内部有效的虚拟IP，集群内部通过虚拟IP访问一个服务。在K8S集群中微服务的负载均衡是由Kube-proxy实现的。Kube-proxy是K8S集群内部的负载均衡器，它是一个分布式代理服务器，在K8S的每个节点都有一个，这个设计体现了它的伸缩性优势，需要访问的服务节点越多，提供负载均衡能力的Kube-proxy就越多，高可用节点也随之增多。与之相比，我们平时在服务器端做个反向代理做负载均衡，还要进一步解决反向代理的负载均衡和高可用问题。</p>
-<p>Service的YAML描述方式</p>
-<pre><code>apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-spec:
-  type: NodePort
-  selector:
-    app: nginx
-  ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30088
-</code></pre><blockquote>
+<p>Service的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  name: nginx</div><div class="line">  labels:</div><div class="line">    app: nginx</div><div class="line">spec:</div><div class="line">  type: NodePort</div><div class="line">  selector:</div><div class="line">    app: nginx</div><div class="line">  ports:</div><div class="line">  - port: 80</div><div class="line">    targetPort: 80</div><div class="line">    nodePort: 30088</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>DaemonSet</p>
 </blockquote>
 <p>长期伺服型和批处理型服务的核心在业务应用，可能有些节点运行多个同类业务的Pod,有些节点上又没有这类Pod运行，而后台支撑型服务的核心关注点在K8S集群中的节点（物理机或者虚拟机），要保证每个节点上都有一个此类Pod运行，节点可能是所有集群节点也可能是通过nodeSelector选定的一些特定节点。典型的后台支撑服务包括，存储、日志和监控等在每个节点上支持K8S集群运行的服务。</p>
-<p>DaemonSet的YAML描述方式</p>
-<pre><code>apiVersion: extensions/v1beta1
-kind: DaemonSet
-metadata:
-  name: tomcat-ds
-spec:
-  template:
-    metadata:
-      labels:
-        app: tomcat
-    spec:
-      containers:
-      - name: tomcat
-        image: tomcat:8.0.30-jre8
-        ports:
-        - containerPort: 8080
-</code></pre><blockquote>
+<p>DaemonSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: DaemonSet</div><div class="line">metadata:</div><div class="line">  name: tomcat-ds</div><div class="line">spec:</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: tomcat</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: tomcat</div><div class="line">        image: tomcat:8.0.30-jre8</div><div class="line">        ports:</div><div class="line">        - containerPort: 8080</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>PetSet</p>
 </blockquote>
 <p>K8S在1.3版本里发布了Alpha版本的PetSet功能，RC和RS主要控制提供无状态服务的，其所控制的Pod的名字是随机设置的，一个Pod出故障了就被丢弃掉，在另一个地方重启一个新的Pod,名字变了，名字和启动在哪里不重要，重要的是Pod数；而PetSet是用来控制有状态服务，PetSet中每个Pod的名字都是事先确定的，不能更改。PetSet中Pod的名字的作用代表与Pod对应的状态。<br>对于RC和RS中的Pod,一般不挂载存储或者挂载共享存储，保存的是所有Pod共享的状态，对于PetSet中的Pod,每个Pod挂载自己独立的存储，如果一个Pod出现故障，从其他节点启动一个同样名字的Pod,要挂载上原来Pod的存储继续以它的状态提供服务。</p>
-<p>PetSet的YAML描述方式</p>
-<pre><code>apiVersion: apps/v1alpha1
-kind: PetSet
-metadata:
-  name: web
-spec:
-  serviceName: &quot;nginx&quot;
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: nginx
-      annotations:
-        pod.alpha.kubernetes.io/initialized: &quot;true&quot;
-    spec:
-      terminationGracePeriodSeconds: 0
-      containers:
-      - name: nginx
-        image: gcr.io/google_containers/nginx-slim:0.8
-        ports:
-        - containerPort: 80
-          name: web
-        volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
-  - metadata:
-      name: www
-      annotations:
-        volume.alpha.kubernetes.io/storage-class: anything
-    spec:
-      accessModes: [ &quot;ReadWriteOnce&quot; ]
-      resources:
-        requests:
-          storage: 1Gi
-</code></pre><blockquote>
+<p>PetSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">apiVersion: apps/v1alpha1</div><div class="line">kind: PetSet</div><div class="line">metadata:</div><div class="line">name: web</div><div class="line">spec:</div><div class="line">serviceName: &quot;nginx&quot;</div><div class="line">replicas: 2</div><div class="line">template:</div><div class="line">  metadata:</div><div class="line">    labels:</div><div class="line">      app: nginx</div><div class="line">    annotations:</div><div class="line">      pod.alpha.kubernetes.io/initialized: &quot;true&quot;</div><div class="line">  spec:</div><div class="line">    terminationGracePeriodSeconds: 0</div><div class="line">    containers:</div><div class="line">    - name: nginx</div><div class="line">      image: gcr.io/google_containers/nginx-slim:0.8</div><div class="line">      ports:</div><div class="line">      - containerPort: 80</div><div class="line">        name: web</div><div class="line">      volumeMounts:</div><div class="line">      - name: www</div><div class="line">        mountPath: /usr/share/nginx/html</div><div class="line">volumeClaimTemplates:</div><div class="line">- metadata:</div><div class="line">    name: www</div><div class="line">    annotations:</div><div class="line">      volume.alpha.kubernetes.io/storage-class: anything</div><div class="line">  spec:</div><div class="line">    accessModes: [ &quot;ReadWriteOnce&quot; ]</div><div class="line">    resources:</div><div class="line">      requests:</div><div class="line">        storage: 1Gi</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>Volume</p>
 </blockquote>
 <p>K8S集群中的存储卷跟Docker的存储卷有些类似，只不过Docker的存储卷作用范围为一个容器，而K8S的存储卷生命周期和作用范围是一个Pod。每一个Pod中声明的存储卷由Pod中所有容器共享，K8S支持多种存储卷类型，例如GlusterFS和Ceph，以及主机本地目录和NFS。K8S还支持使用Persistent Volume Claim即PVC这种逻辑存储，使用这种存储可以忽略后台的实际存储技术，而将有关存储实际技术的配置交给存储管理员通过Persistent Volume来配置。</p>
@@ -520,33 +416,9 @@ spec:
 </ul>
 </li>
 </ul>
-<p>PV的YAML描述</p>
-<pre><code>apiVersion: &quot;v1&quot;
-kind: &quot;PersistentVolume&quot;
-metadata:
- name: &quot;gluster-default-volume&quot;
-spec:
- capacity:
-    storage: &quot;8Gi&quot;
- accessModes:
-    - &quot;ReadWriteMany&quot;
- glusterfs:
-    endpoints: &quot;glusterfs-cluster&quot;
-    path: &quot;gluster_vol&quot;
-    readOnly: false
- persistentVolumeReclaimPolicy: &quot;Recycle&quot;
-</code></pre><p>PVC的YAMLr描述</p>
-<pre><code>apiVersion: &quot;v1&quot;
-kind: &quot;PersistentVolumeClaim&quot;
-metadata:
- name: &quot;glusterfs-claim&quot;
-spec:
- accessModes:
-    - &quot;ReadWriteMany&quot;
- resources:
-    requests:
-     storage: &quot;8Gi&quot;
-</code></pre>
+<p>PV的YAML描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apiVersion: &quot;v1&quot;</div><div class="line">kind: &quot;PersistentVolume&quot;</div><div class="line">metadata:</div><div class="line"> name: &quot;gluster-default-volume&quot;</div><div class="line">spec:</div><div class="line"> capacity:</div><div class="line">    storage: &quot;8Gi&quot;</div><div class="line"> accessModes:</div><div class="line">    - &quot;ReadWriteMany&quot;</div><div class="line"> glusterfs:</div><div class="line">    endpoints: &quot;glusterfs-cluster&quot;</div><div class="line">    path: &quot;gluster_vol&quot;</div><div class="line">    readOnly: false</div><div class="line"> persistentVolumeReclaimPolicy: &quot;Recycle&quot;</div></pre></td></tr></table></figure></p>
+<p>PVC的YAMLr描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">apiVersion: &quot;v1&quot;</div><div class="line">kind: &quot;PersistentVolumeClaim&quot;</div><div class="line">metadata:</div><div class="line"> name: &quot;glusterfs-claim&quot;</div><div class="line">spec:</div><div class="line"> accessModes:</div><div class="line">    - &quot;ReadWriteMany&quot;</div><div class="line"> resources:</div><div class="line">    requests:</div><div class="line">     storage: &quot;8Gi&quot;</div></pre></td></tr></table></figure></p>
+
       
     </div>
 
@@ -566,6 +438,12 @@ spec:
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+        </div>
       
 
       
@@ -650,7 +528,7 @@ spec:
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -658,6 +536,13 @@ spec:
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
