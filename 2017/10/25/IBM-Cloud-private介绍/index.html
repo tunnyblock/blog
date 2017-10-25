@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ICP,Kubernetes," />
+  <meta name="keywords" content="IBM Cloud private," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/25/IBM-Cloud-private介绍/index.html">
 <meta property="og:site_name" content="Tunny Blog">
 <meta property="og:description" content="安装1234567891011121314151617181920212223242526272829303132333435363738394041424344#至少三台CentOS7.2机器#每台机器关闭防火墙setenforce 0systemctl stop firewalld &amp;amp;&amp;amp; systemctl disable firewalld# 安装dockerwget -qO">
-<meta property="og:updated_time" content="2017-10-25T12:22:40.364Z">
+<meta property="og:updated_time" content="2017-10-25T12:31:09.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IBM Cloud private介绍">
 <meta name="twitter:description" content="安装1234567891011121314151617181920212223242526272829303132333435363738394041424344#至少三台CentOS7.2机器#每台机器关闭防火墙setenforce 0systemctl stop firewalld &amp;amp;&amp;amp; systemctl disable firewalld# 安装dockerwget -qO">
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/blog/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -192,12 +192,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/blog/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -305,11 +325,11 @@
       
 
       
-        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#至少三台CentOS7.2机器</div><div class="line"></div><div class="line">#每台机器关闭防火墙</div><div class="line">setenforce 0</div><div class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</div><div class="line"></div><div class="line"># 安装docker</div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo &apos;&#123;&quot;insecure-registries&quot;:[&quot;0.0.0.0/0&quot;]&#125;&apos;&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line"></div><div class="line"># sysctl vm.max_map_count</div><div class="line">sysctl vm.max_map_count</div><div class="line">sysctl -w vm.max_map_count=262144</div><div class="line">echo &quot;vm.max_map_count=262144&quot;&gt;&gt;/etc/sysctl.conf</div><div class="line"></div><div class="line"># 拉取installer镜像</div><div class="line">docker pull ibmcom/cfc-installer:1.2.0</div><div class="line"></div><div class="line">mkdir -p /opt/ibm-cloud-private-ce-1.2.0</div><div class="line">cd /opt/ibm-cloud-private-ce-1.2.0</div><div class="line">docker run -e LICENSE=accept -v &quot;$(pwd)&quot;:/data ibmcom/cfc-installer:1.2.0 cp -r cluster /data</div><div class="line"></div><div class="line">#配置</div><div class="line">vim config.yaml</div><div class="line">ansible_user: root</div><div class="line">ansible_ssh_pass: dintern065754</div><div class="line">ansible_ssh_common_args: &quot;-oPubkeyAuthentication=no&quot;</div><div class="line"></div><div class="line">vim hosts</div><div class="line">[master]</div><div class="line">10.3.0.82</div><div class="line"></div><div class="line">[worker]</div><div class="line">10.3.0.83</div><div class="line">10.3.0.84</div><div class="line"></div><div class="line">[proxy]</div><div class="line">10.3.0.82</div><div class="line"></div><div class="line">docker run -e LICENSE=accept --net=host -t -v &quot;$(pwd)&quot;:/installer/cluster ibmcom/cfc-installer:1.2.0 install -vvv</div><div class="line"></div><div class="line">UI URL is https://master_ip:8443 , default username/password is admin/admin</div></pre></td></tr></table></figure>
-<h4 id="配置kubectl客户端"><a href="#配置kubectl客户端" class="headerlink" title="配置kubectl客户端"></a>配置kubectl客户端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.6.1/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line">#这些配置信息可以在UI中获得</div><div class="line">kubectl config set-cluster cfc --server=https://10.3.0.82:8001 --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div></pre></td></tr></table></figure>
-<h4 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 安装docker</div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo &apos;&#123;&quot;insecure-registries&quot;:[&quot;0.0.0.0/0&quot;]&#125;&apos;&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line">#如果是集群中的work node则不需要添加</div><div class="line">echo &quot;&lt;master_ip&gt; master.cfc&quot;&gt;&gt;/etc/hosts</div><div class="line">docker login master.cfc:8500</div><div class="line">admin/admin</div><div class="line">docker pull jenkins</div><div class="line">docker tag jenkins master.cfc:8500/default/jenkins</div><div class="line">docker push master.cfc:8500/default/jenkins</div></pre></td></tr></table></figure>
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#至少三台CentOS7.2机器</span></div><div class="line"></div><div class="line"><span class="comment">#每台机器关闭防火墙</span></div><div class="line">setenforce <span class="number">0</span></div><div class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</div><div class="line"></div><div class="line"><span class="comment"># 安装docker</span></div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo <span class="string">'&#123;"insecure-registries":["0.0.0.0/0"]&#125;'</span>&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line"></div><div class="line"><span class="comment"># sysctl vm.max_map_count</span></div><div class="line">sysctl vm.max_map_count</div><div class="line">sysctl -w vm.max_map_count=<span class="number">262144</span></div><div class="line">echo <span class="string">"vm.max_map_count=262144"</span>&gt;&gt;/etc/sysctl.conf</div><div class="line"></div><div class="line"><span class="comment"># 拉取installer镜像</span></div><div class="line">docker pull ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span></div><div class="line"></div><div class="line">mkdir -p /opt/ibm-cloud-private-ce<span class="number">-1.2</span><span class="number">.0</span></div><div class="line">cd /opt/ibm-cloud-private-ce<span class="number">-1.2</span><span class="number">.0</span></div><div class="line">docker run -e LICENSE=accept -v <span class="string">"$(pwd)"</span>:/data ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span> cp -r cluster /data</div><div class="line"></div><div class="line"><span class="comment">#配置</span></div><div class="line">vim config.yaml</div><div class="line">ansible_user: root</div><div class="line">ansible_ssh_pass: dintern065754</div><div class="line">ansible_ssh_common_args: <span class="string">"-oPubkeyAuthentication=no"</span></div><div class="line"></div><div class="line">vim hosts</div><div class="line">[master]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span></div><div class="line"></div><div class="line">[worker]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.83</span></div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.84</span></div><div class="line"></div><div class="line">[proxy]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span></div><div class="line"></div><div class="line">docker run -e LICENSE=accept --net=host -t -v <span class="string">"$(pwd)"</span>:/installer/cluster ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span> install -vvv</div><div class="line"></div><div class="line">UI URL <span class="keyword">is</span> https://master_ip:<span class="number">8443</span> , default username/password <span class="keyword">is</span> admin/admin</div></pre></td></tr></table></figure>
+<h4 id="配置kubectl客户端"><a href="#配置kubectl客户端" class="headerlink" title="配置kubectl客户端"></a>配置kubectl客户端</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1<span class="number">.6</span><span class="number">.1</span>/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line"><span class="comment">#这些配置信息可以在UI中获得</span></div><div class="line">kubectl config set-cluster cfc --server=https://<span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span>:<span class="number">8001</span> --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div></pre></td></tr></table></figure>
+<h4 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装docker</span></div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo <span class="string">'&#123;"insecure-registries":["0.0.0.0/0"]&#125;'</span>&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line"><span class="comment">#如果是集群中的work node则不需要添加</span></div><div class="line">echo <span class="string">"&lt;master_ip&gt; master.cfc"</span>&gt;&gt;/etc/hosts</div><div class="line">docker login master.cfc:<span class="number">8500</span></div><div class="line">admin/admin</div><div class="line">docker pull jenkins</div><div class="line">docker tag jenkins master.cfc:<span class="number">8500</span>/default/jenkins</div><div class="line">docker push master.cfc:<span class="number">8500</span>/default/jenkins</div></pre></td></tr></table></figure>
 <h4 id="LDAP配置"><a href="#LDAP配置" class="headerlink" title="LDAP配置"></a>LDAP配置</h4><p><a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/installing/configure_ldap.html" target="_blank" rel="external">https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/installing/configure_ldap.html</a><br><a href="https://developer.ibm.com/opentech/2015/08/14/configuring-keystone-with-ibms-bluepages-ldap/" target="_blank" rel="external">https://developer.ibm.com/opentech/2015/08/14/configuring-keystone-with-ibms-bluepages-ldap/</a></p>
-<h4 id="Helm应用"><a href="#Helm应用" class="headerlink" title="Helm应用"></a>Helm应用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">yum install -y socat</div><div class="line">#配置kubectl</div><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.6.1/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line">#这些配置信息可以在UI中获得</div><div class="line">kubectl config set-cluster cfc --server=https://10.3.0.82:8001 --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div><div class="line"></div><div class="line">docker run -t --entrypoint=/bin/cp -v /usr/local/bin:/data ibmcom/helm:v2.4.1  /helm /data/</div><div class="line">mkdir -p /var/lib/helm; export HELM_HOME=/var/lib/helm</div><div class="line">helm init --client-only</div><div class="line">helm version</div><div class="line">helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/</div><div class="line">helm search -l</div><div class="line">helm install --name=my-wordpress stable/wordpress</div><div class="line">helm list</div><div class="line">helm delete my-wordpress --purge</div><div class="line"></div><div class="line">#创建Helm Chart</div><div class="line">#创建本地仓库</div><div class="line">mkdir charts</div><div class="line">helm serve -–address 0.0.0.0:8879 -–repo-path ./charts</div><div class="line"></div><div class="line">helm create tomcat</div><div class="line">tree tomcat</div><div class="line">tomcat</div><div class="line"> |-- charts</div><div class="line"> |-- Chart.yaml</div><div class="line"> |-- templates</div><div class="line"> |   |-- deployment.yaml</div><div class="line"> |   |-- _helpers.tpl</div><div class="line"> |   |-- NOTES.txt</div><div class="line"> |   `-- service.yaml</div><div class="line"> `-- values.yaml</div><div class="line">helm lint --strict tomcat</div><div class="line">helm package tomcat</div><div class="line"></div><div class="line">mkdir tomcat</div><div class="line">mv tomcat-0.1.0.tgz fantastic-charts/</div><div class="line">helm repo index fantastic-charts –url http://127.0.0.1:8879</div><div class="line">helm repo add fantastic-charts http://127.0.0.1:8879</div><div class="line">helm repo list</div></pre></td></tr></table></figure>
+<h4 id="Helm应用"><a href="#Helm应用" class="headerlink" title="Helm应用"></a>Helm应用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">yum install -y socat</div><div class="line"><span class="comment">#配置kubectl</span></div><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1<span class="number">.6</span><span class="number">.1</span>/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line"><span class="comment">#这些配置信息可以在UI中获得</span></div><div class="line">kubectl config set-cluster cfc --server=https://<span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span>:<span class="number">8001</span> --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div><div class="line"></div><div class="line">docker run -t --entrypoint=/bin/cp -v /usr/local/bin:/data ibmcom/helm:v2<span class="number">.4</span><span class="number">.1</span>  /helm /data/</div><div class="line">mkdir -p /var/lib/helm; export HELM_HOME=/var/lib/helm</div><div class="line">helm init --client-only</div><div class="line">helm version</div><div class="line">helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/</div><div class="line">helm search -l</div><div class="line">helm install --name=my-wordpress stable/wordpress</div><div class="line">helm list</div><div class="line">helm delete my-wordpress --purge</div><div class="line"></div><div class="line"><span class="comment">#创建Helm Chart</span></div><div class="line"><span class="comment">#创建本地仓库</span></div><div class="line">mkdir charts</div><div class="line">helm serve -–address <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8879</span> -–repo-path ./charts</div><div class="line"></div><div class="line">helm create tomcat</div><div class="line">tree tomcat</div><div class="line">tomcat</div><div class="line"> |-- charts</div><div class="line"> |-- Chart.yaml</div><div class="line"> |-- templates</div><div class="line"> |   |-- deployment.yaml</div><div class="line"> |   |-- _helpers.tpl</div><div class="line"> |   |-- NOTES.txt</div><div class="line"> |   `-- service.yaml</div><div class="line"> `-- values.yaml</div><div class="line">helm lint --strict tomcat</div><div class="line">helm package tomcat</div><div class="line"></div><div class="line">mkdir tomcat</div><div class="line">mv tomcat<span class="number">-0.1</span><span class="number">.0</span>.tgz fantastic-charts/</div><div class="line">helm repo index fantastic-charts –url http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8879</span></div><div class="line">helm repo add fantastic-charts http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8879</span></div><div class="line">helm repo list</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -354,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/ICP-Kubernetes/" rel="tag"># ICP,Kubernetes</a>
+            <a href="/blog/tags/IBM-Cloud-private/" rel="tag"># IBM Cloud private</a>
           
         </div>
       
@@ -451,10 +471,10 @@
 
           
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">5</span>
+              <a href="/blog/tags">
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
@@ -523,7 +543,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -590,13 +610,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
 
   
   <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.0"></script>
