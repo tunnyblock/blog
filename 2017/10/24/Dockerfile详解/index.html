@@ -84,16 +84,17 @@
 
 
 
-<meta name="description" content="示例123456789101112131415161718192021222324252627282930FROM ubuntu:14.04MAINTAINER Yu Chao &amp;lt;chaochaoyuyu@126.com&amp;gt;RUN apt-get update \  &amp;amp;&amp;amp; apt-get install openssh-server  -y \  &amp;amp;&amp;amp; r">
+<meta name="description" content="示例123456789101112131415161718192021222324252627282930FROM ubuntu:14.04MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;RUN apt-get update \  &amp;&amp; apt-get install openssh-server  -y \  &amp;&amp; r">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dockerfile详解">
-<meta property="og:url" content="http://yoursite.com/2017/10/24/Dockerfile详解/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/Dockerfile%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Tunny Blog">
-<meta property="og:description" content="示例123456789101112131415161718192021222324252627282930FROM ubuntu:14.04MAINTAINER Yu Chao &amp;lt;chaochaoyuyu@126.com&amp;gt;RUN apt-get update \  &amp;amp;&amp;amp; apt-get install openssh-server  -y \  &amp;amp;&amp;amp; r">
-<meta property="og:updated_time" content="2017-10-25T11:55:54.055Z">
+<meta property="og:description" content="示例123456789101112131415161718192021222324252627282930FROM ubuntu:14.04MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;RUN apt-get update \  &amp;&amp; apt-get install openssh-server  -y \  &amp;&amp; r">
+<meta property="article:published_time" content="2017-10-24T12:08:49.000Z">
+<meta property="article:modified_time" content="2017-10-25T11:55:54.055Z">
+<meta property="article:author" content="tunny880105@126.com">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dockerfile详解">
-<meta name="twitter:description" content="示例123456789101112131415161718192021222324252627282930FROM ubuntu:14.04MAINTAINER Yu Chao &amp;lt;chaochaoyuyu@126.com&amp;gt;RUN apt-get update \  &amp;amp;&amp;amp; apt-get install openssh-server  -y \  &amp;amp;&amp;amp; r">
 
 
 
@@ -128,7 +129,7 @@
 
 
   <title> Dockerfile详解 | Tunny Blog </title>
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -230,7 +231,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/24/Dockerfile详解/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/24/Dockerfile%E8%AF%A6%E8%A7%A3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -305,9 +306,9 @@
       
 
       
-        <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">FROM ubuntu:14.04</div><div class="line">MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;</div><div class="line"></div><div class="line">RUN apt-get update \</div><div class="line">  &amp;&amp; apt-get install openssh-server  -y \</div><div class="line">  &amp;&amp; rm -rf /var/lib/apt/lists/*</div><div class="line"></div><div class="line">ADD apache-maven-3.2.3.tar.gz /opt/</div><div class="line">ADD jdk-8u121-linux-x64.tar.gz /opt/</div><div class="line">COPY node-v6.11.1-linux-x64 /opt/node-v6.11.1</div><div class="line">COPY settings.xml /opt/apache-maven-3.2.3/conf/</div><div class="line"></div><div class="line">ENV MAVEN_HOME  /opt/apache-maven-3.2.3</div><div class="line">ENV JAVA_HOME  /opt/jdk1.8.0_121</div><div class="line">ENV NODE_HOME /opt/node-v6.11.1</div><div class="line">ENV CLASSPATH $JAVA_HOME/lib</div><div class="line">ENV PATH $MAVEN_HOME/bin:$JAVA_HOME/bin:$NODE_HOME/bin:$PATH</div><div class="line"></div><div class="line">ARG PASSWORD=passw0rd</div><div class="line"></div><div class="line"># config ssh</div><div class="line">RUN mkdir /var/run/sshd \</div><div class="line">    &amp;&amp; echo &quot;root:$PASSWORD&quot; | chpasswd \</div><div class="line">    &amp;&amp; sed -i &apos;s/PermitRootLogin without-password/PermitRootLogin yes/&apos; /etc/ssh/sshd_config</div><div class="line"></div><div class="line">EXPOSE 22</div><div class="line"></div><div class="line">RUN echo &quot; This container openes SSH service with root/$PASSWORD to login.&quot;</div><div class="line"></div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
+        <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu:14.04</span><br><span class="line">MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;</span><br><span class="line"></span><br><span class="line">RUN apt-get update \</span><br><span class="line">  &amp;&amp; apt-get install openssh-server  -y \</span><br><span class="line">  &amp;&amp; rm -rf /var/lib/apt/lists/*</span><br><span class="line"></span><br><span class="line">ADD apache-maven-3.2.3.tar.gz /opt/</span><br><span class="line">ADD jdk-8u121-linux-x64.tar.gz /opt/</span><br><span class="line">COPY node-v6.11.1-linux-x64 /opt/node-v6.11.1</span><br><span class="line">COPY settings.xml /opt/apache-maven-3.2.3/conf/</span><br><span class="line"></span><br><span class="line">ENV MAVEN_HOME  /opt/apache-maven-3.2.3</span><br><span class="line">ENV JAVA_HOME  /opt/jdk1.8.0_121</span><br><span class="line">ENV NODE_HOME /opt/node-v6.11.1</span><br><span class="line">ENV CLASSPATH $JAVA_HOME/lib</span><br><span class="line">ENV PATH $MAVEN_HOME/bin:$JAVA_HOME/bin:$NODE_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line">ARG PASSWORD=passw0rd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> config ssh</span></span><br><span class="line">RUN mkdir /var/run/sshd \</span><br><span class="line">    &amp;&amp; echo "root:$PASSWORD" | chpasswd \</span><br><span class="line">    &amp;&amp; sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">EXPOSE 22</span><br><span class="line"></span><br><span class="line">RUN echo " This container openes SSH service with root/$PASSWORD to login."</span><br><span class="line"></span><br><span class="line">CMD ["/usr/sbin/sshd", "-D"]</span><br></pre></td></tr></table></figure>
 <h4 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h4><p>语法： FROM <code>&lt;image&gt;:&lt;tag&gt;</code><br>解释：设置要制作的镜像基于哪个镜像，FROM指令必须是整个Dockerfile的第一个指令</p>
-<h4 id="MAINTAINER"><a href="#MAINTAINER" class="headerlink" title="MAINTAINER"></a>MAINTAINER</h4><p>语法：MAINTAINER <name><br>解释：MAINTAINER指令允许你给将要制作的镜像设置作者信息</name></p>
+<h4 id="MAINTAINER"><a href="#MAINTAINER" class="headerlink" title="MAINTAINER"></a>MAINTAINER</h4><p>语法：MAINTAINER <name><br>解释：MAINTAINER指令允许你给将要制作的镜像设置作者信息</p>
 <h4 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h4><p>语法：</p>
 <ul>
 <li>RUN <command>        #将会调用/bin/sh -c <command></li>
@@ -317,22 +318,22 @@
 <ul>
 <li>CMD [“executable”, “param1”, “param2”]    #将会调用exec执行，首选方式</li>
 <li>CMD [“param1”, “param2”]        #当使用ENTRYPOINT指令时，为该指令传递默认参数</li>
-<li>CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行<br>解释：CMD指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个CMD指令，则只有最后一个CMD指令有效。当出现ENTRYPOINT指令时，CMD中定义的内容会作为ENTRYPOINT指令的默认参数，也就是说可以使用CMD指令给ENTRYPOINT传递参数。<br>注意：RUN和CMD都是执行命令，他们的差异在于RUN中定义的命令会在执行docker build命令创建镜像时执行，而CMD中定义的命令会在执行docker run命令运行镜像时执行，另外使用第一种语法也就是调用exec执行时，命令必须为绝对路径。</param2></param1></li>
+<li>CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行<br>解释：CMD指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个CMD指令，则只有最后一个CMD指令有效。当出现ENTRYPOINT指令时，CMD中定义的内容会作为ENTRYPOINT指令的默认参数，也就是说可以使用CMD指令给ENTRYPOINT传递参数。<br>注意：RUN和CMD都是执行命令，他们的差异在于RUN中定义的命令会在执行docker build命令创建镜像时执行，而CMD中定义的命令会在执行docker run命令运行镜像时执行，另外使用第一种语法也就是调用exec执行时，命令必须为绝对路径。</li>
 </ul>
-<h4 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h4><p>语法：EXPOSE <port> [ …]<br>解释：EXPOSE指令用来告诉Docker这个容器在运行时会监听哪些端口，Docker在连接不同的容器(使用–link参数)时使用这些信息。</port></p>
-<h4 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h4><p>语法：ENV <key> <value><br>解释：ENV指令用于设置环境变量，在Dockerfile中这些设置的环境变量也会影响到RUN指令，当运行生成的镜像时这些环境变量依然有效，如果需要在运行时更改这些环境变量可以在运行docker run时添加–env <key>=<value>参数来修改。<br>注意：最好不要定义那些可能和系统预定义的环境变量冲突的名字，否则可能会产生意想不到的结果。</value></key></value></key></p>
-<h4 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h4><p>语法：ADD <src> <dest><br>解释：ADD指令用于从指定路径拷贝一个文件或目录到容器的指定路径中，<src>是一个文件或目录的路径，也可以是一个url，路径是相对于该Dockerfile文件所在位置的相对路径，<dest>是目标容器的一个绝对路径，例如/home/yooke/Docker/Dockerfile这个文件中定义的，那么ADD /data.txt /db/指令将会尝试拷贝文件从/home/yooke/Docker/data.txt到将要生成的容器的/db/data.txt，且文件或目录的属组和属主分别为uid和gid为0的用户和组，如果是通过url方式获取的文件，则权限是600。<br>注意：* 如果执行docker build – &lt; somefile即通过标准输入来创建时，ADD指令只支持url方式，另外如果url需要认证，则可以通过RUN wget …或RUN curl …来完成，ADD指令不支持认证。</dest></src></dest></src></p>
+<h4 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h4><p>语法：EXPOSE <port> [ …]<br>解释：EXPOSE指令用来告诉Docker这个容器在运行时会监听哪些端口，Docker在连接不同的容器(使用–link参数)时使用这些信息。</p>
+<h4 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h4><p>语法：ENV <key> <value><br>解释：ENV指令用于设置环境变量，在Dockerfile中这些设置的环境变量也会影响到RUN指令，当运行生成的镜像时这些环境变量依然有效，如果需要在运行时更改这些环境变量可以在运行docker run时添加–env <key>=<value>参数来修改。<br>注意：最好不要定义那些可能和系统预定义的环境变量冲突的名字，否则可能会产生意想不到的结果。</p>
+<h4 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h4><p>语法：ADD <src> <dest><br>解释：ADD指令用于从指定路径拷贝一个文件或目录到容器的指定路径中，<src>是一个文件或目录的路径，也可以是一个url，路径是相对于该Dockerfile文件所在位置的相对路径，<dest>是目标容器的一个绝对路径，例如/home/yooke/Docker/Dockerfile这个文件中定义的，那么ADD /data.txt /db/指令将会尝试拷贝文件从/home/yooke/Docker/data.txt到将要生成的容器的/db/data.txt，且文件或目录的属组和属主分别为uid和gid为0的用户和组，如果是通过url方式获取的文件，则权限是600。<br>注意：* 如果执行docker build – &lt; somefile即通过标准输入来创建时，ADD指令只支持url方式，另外如果url需要认证，则可以通过RUN wget …或RUN curl …来完成，ADD指令不支持认证。</p>
 <ul>
-<li><src>路径必须与Dockerfile在同级目录或子目录中，例如不能使用ADD ../somepath，因为在执行docker build时首先做的就是把Dockerfile所在目录包含子目录发送给docker的守护进程。</src></li>
-<li>如果<src>是一个url且<dest>不是以”/“结尾，则会下载文件并重命名为<dest>。</dest></dest></src></li>
-<li>如果<src>是一个url且<dest>以“/”结尾，则会下载文件到<dest>/<filename>，url必须是一个正常的路径形式，“<a href="http://example.com”像这样的url是不能正常工作的。" target="_blank" rel="external">http://example.com”像这样的url是不能正常工作的。</a></filename></dest></dest></src></li>
-<li>如果<src>是一个本地的压缩包且<dest>是以“/”结尾的目录，则会调用“tar -x”命令解压缩，如果<dest>有同名文件则覆盖，但<src>是一个url时不会执行解压缩。</src></dest></dest></src></li>
+<li><src>路径必须与Dockerfile在同级目录或子目录中，例如不能使用ADD ../somepath，因为在执行docker build时首先做的就是把Dockerfile所在目录包含子目录发送给docker的守护进程。</li>
+<li>如果<src>是一个url且<dest>不是以”/“结尾，则会下载文件并重命名为<dest>。</li>
+<li>如果<src>是一个url且<dest>以“/”结尾，则会下载文件到<dest>/<filename>，url必须是一个正常的路径形式，“<a href="http://example.com”像这样的url是不能正常工作的。" target="_blank" rel="noopener">http://example.com”像这样的url是不能正常工作的。</a></li>
+<li>如果<src>是一个本地的压缩包且<dest>是以“/”结尾的目录，则会调用“tar -x”命令解压缩，如果<dest>有同名文件则覆盖，但<src>是一个url时不会执行解压缩。</li>
 </ul>
-<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>语法：COPY <src> <dest><br>解释：用法与ADD相同，不过<src>不支持使用url，所以在使用docker build – &lt; somefile时该指令不能使用。</src></dest></src></p>
+<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>语法：COPY <src> <dest><br>解释：用法与ADD相同，不过<src>不支持使用url，所以在使用docker build – &lt; somefile时该指令不能使用。</p>
 <h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>语法：</p>
 <ul>
 <li>ENTRYPOINT [“executable”, “param1”, “param2”]        #将会调用exec执行，首选方式</li>
-<li>ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行<br>解释：ENTRYPOINT指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个ENTRYPOINT指令，则只有最后一个指令有效。ENTRYPOINT指令中指定的命令(exec执行的方式)可以通过docker run来传递参数，例如docker run <images> -l启动的容器将会把-l参数传递给ENTRYPOINT指令定义的命令并会覆盖CMD指令中定义的默认参数(如果有的话)，但不会覆盖该指令定义的参数，例如ENTRYPOINT [“ls”,”-a”]，CMD [“/etc”],当通过docker run <code>image</code>启动容器时该容器会运行ls -a /etc命令，当使用docker run <code>image</code> -l启动时该容器会运行ls -a -l命令，-l参数会覆盖CMD指令中定义的/etc参数。<br>注意：</images></li>
+<li>ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行<br>解释：ENTRYPOINT指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个ENTRYPOINT指令，则只有最后一个指令有效。ENTRYPOINT指令中指定的命令(exec执行的方式)可以通过docker run来传递参数，例如docker run <images> -l启动的容器将会把-l参数传递给ENTRYPOINT指令定义的命令并会覆盖CMD指令中定义的默认参数(如果有的话)，但不会覆盖该指令定义的参数，例如ENTRYPOINT [“ls”,”-a”]，CMD [“/etc”],当通过docker run <code>image</code>启动容器时该容器会运行ls -a /etc命令，当使用docker run <code>image</code> -l启动时该容器会运行ls -a -l命令，-l参数会覆盖CMD指令中定义的/etc参数。<br>注意：</li>
 <li>当使用ENTRYPOINT指令时生成的镜像运行时只会执行该指令指定的命令。</li>
 <li>当出现ENTRYPOINT指令时CMD指令只可能(当ENTRYPOINT指令使用exec方式执行时)被当做ENTRYPOINT指令的参数使用，其他情况则会被忽略。</li>
 </ul>
@@ -348,7 +349,7 @@
 <li>ONBUILD指令不允许嵌套，例如ONBUILD ONBUILD ADD . /data是不允许的。</li>
 <li>ONBUILD指令不会执行其定义的FROM或MAINTAINER指令。</li>
 </ul>
-<h4 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h4><p>语法： ARG <name>[=default value]<br>解释：ARG指令定义了一个变量，能让用户可以在构建期间使用docker build命令和其参数–build-arg =对这个变量赋值。如果用户指定了一个构建参数没有定义在Dockerfile的话，将输出错误。</name></p>
+<h4 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h4><p>语法： ARG <name>[=default value]<br>解释：ARG指令定义了一个变量，能让用户可以在构建期间使用docker build命令和其参数–build-arg =对这个变量赋值。如果用户指定了一个构建参数没有定义在Dockerfile的话，将输出错误。</p>
 
       
     </div>
@@ -402,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/10/24/个人简历/" rel="next" title="个人简历">
-                <i class="fa fa-chevron-left"></i> 个人简历
+              <a href="/blog/2017/05/08/Swarm-Mode%E7%A0%94%E7%A9%B6/" rel="next" title="Swarm Mode研究">
+                <i class="fa fa-chevron-left"></i> Swarm Mode研究
               </a>
             
           </div>
@@ -412,8 +413,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/10/25/IBM-Cloud-private介绍/" rel="prev" title="IBM Cloud private介绍">
-                IBM Cloud private介绍 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/12/07/%E3%80%90SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%91%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/" rel="prev" title="【SpringBoot系列教程】项目初始化">
+                【SpringBoot系列教程】项目初始化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -484,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -495,7 +496,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -551,7 +552,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -560,12 +561,12 @@
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
     NexT.Mist
   </a>
 </div>

@@ -88,8 +88,8 @@
 <meta property="og:title" content="Tunny Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Tunny Blog">
+<meta property="article:author" content="tunny880105@126.com">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tunny Blog">
 
 
 
@@ -124,7 +124,7 @@
 
 
   <title> Tunny Blog </title>
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -228,7 +228,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/12/07/【SpringBoot系列教程】开发Web应用/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/12/07/%E3%80%90SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%91%E5%BC%80%E5%8F%91Web%E5%BA%94%E7%94%A8/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -253,7 +253,7 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/12/07/【SpringBoot系列教程】开发Web应用/" itemprop="url">
+                <a class="post-title-link" href="/blog/2017/12/07/%E3%80%90SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%91%E5%BC%80%E5%8F%91Web%E5%BA%94%E7%94%A8/" itemprop="url">
                   【SpringBoot系列教程】开发Web应用
                 </a>
               
@@ -323,8 +323,8 @@
 <li>Groovy</li>
 <li>Mustache<br>应该尽量避免使用JSP，模板配置放置在src/main/resouces/templates</li>
 </ul>
-<h4 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--pom.xml添加依赖--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="编写测试用例"><a href="#编写测试用例" class="headerlink" title="编写测试用例"></a>编写测试用例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</div><div class="line"><span class="meta">@SpringBootTest</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootApplicationTests</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> MockMvc mvc;</div><div class="line"></div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helloRestTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		mvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> HelloRestController()).build();</div><div class="line">		mvc.perform(MockMvcRequestBuilders.get(<span class="string">"/helloworld"</span>).accept(MediaType.TEXT_PLAIN).characterEncoding(<span class="string">"UTF-8"</span>))</div><div class="line">				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--pom.xml添加依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="编写测试用例"><a href="#编写测试用例" class="headerlink" title="编写测试用例"></a>编写测试用例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">SpringbootApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> MockMvc mvc;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helloRestTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		mvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> HelloRestController()).build();</span><br><span class="line">		mvc.perform(MockMvcRequestBuilders.get(<span class="string">"/helloworld"</span>).accept(MediaType.TEXT_PLAIN).characterEncoding(<span class="string">"UTF-8"</span>))</span><br><span class="line">				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -363,7 +363,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/12/07/【SpringBoot系列教程】项目初始化/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/12/07/%E3%80%90SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%91%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -388,7 +388,7 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/12/07/【SpringBoot系列教程】项目初始化/" itemprop="url">
+                <a class="post-title-link" href="/blog/2017/12/07/%E3%80%90SpringBoot%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E3%80%91%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/" itemprop="url">
                   【SpringBoot系列教程】项目初始化
                 </a>
               
@@ -443,10 +443,10 @@
       
         
           
-            <h4 id="生成Maven项目骨架"><a href="#生成Maven项目骨架" class="headerlink" title="生成Maven项目骨架"></a>生成Maven项目骨架</h4><p>访问<strong><a href="http://start.spring.io/" target="_blank" rel="external">http://start.spring.io/</a></strong>生成生成Maven项目骨架</p>
-<h4 id="添加Web依赖"><a href="#添加Web依赖" class="headerlink" title="添加Web依赖"></a>添加Web依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--pom.xml添加web依赖--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="编写RestController"><a href="#编写RestController" class="headerlink" title="编写RestController"></a>编写RestController</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloRestController</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@RequestMapping</span>(value=<span class="string">"/helloworld"</span>,method=RequestMethod.GET)</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Hello World"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="编写测试用例"><a href="#编写测试用例" class="headerlink" title="编写测试用例"></a>编写测试用例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</div><div class="line"><span class="meta">@SpringBootTest</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootApplicationTests</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> MockMvc mvc;</div><div class="line"></div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helloRestTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">		mvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> HelloRestController()).build();</div><div class="line">		mvc.perform(MockMvcRequestBuilders.get(<span class="string">"/helloworld"</span>).accept(MediaType.TEXT_PLAIN).characterEncoding(<span class="string">"UTF-8"</span>))</div><div class="line">				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h4 id="生成Maven项目骨架"><a href="#生成Maven项目骨架" class="headerlink" title="生成Maven项目骨架"></a>生成Maven项目骨架</h4><p>访问<strong><a href="http://start.spring.io/" target="_blank" rel="noopener">http://start.spring.io/</a></strong>生成生成Maven项目骨架</p>
+<h4 id="添加Web依赖"><a href="#添加Web依赖" class="headerlink" title="添加Web依赖"></a>添加Web依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--pom.xml添加web依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="编写RestController"><a href="#编写RestController" class="headerlink" title="编写RestController"></a>编写RestController</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloRestController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(value=<span class="string">"/helloworld"</span>,method=RequestMethod.GET)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hello World"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编写测试用例"><a href="#编写测试用例" class="headerlink" title="编写测试用例"></a>编写测试用例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">@<span class="title">SpringBootTest</span></span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">SpringbootApplicationTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> MockMvc mvc;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">helloRestTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		mvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> HelloRestController()).build();</span><br><span class="line">		mvc.perform(MockMvcRequestBuilders.get(<span class="string">"/helloworld"</span>).accept(MediaType.TEXT_PLAIN).characterEncoding(<span class="string">"UTF-8"</span>))</span><br><span class="line">				.andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -485,7 +485,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/11/23/ICP证书方式连接集群/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/24/Dockerfile%E8%AF%A6%E8%A7%A3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -510,251 +510,7 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/11/23/ICP证书方式连接集群/" itemprop="url">
-                  ICP证书方式连接集群
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-23T17:40:43+08:00">
-                2017-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>ICp安装后，Portal给出的基于Token方式连接集群，默认过期时间是12小时，之后就会过期，需要重新设置cluster,token等信息。看官方文档有基于Service Account的方式来连接，但一直未成功。之前在Java端用证书的方式已经成功实现连接，也找到了3个证书文件，分别是<strong>/etc/cfc/conf/ca.crt, /etc/cfc/conf/kubecfg.crt,/etc/cfc/conf/kubecfg.key</strong>，因此肯定是有方法通过证书的方式实现kubectl永久连接</p>
-<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">kubectl config set-cluster cfc --server=https://&lt;master_ip&gt;:8001 --certificate-authority=/etc/cfc/conf/ca.crt</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --client-certificate=/etc/cfc/conf/kubecfg.crt --client-key=/etc/cfc/conf/kubecfg.key</div><div class="line">kubectl config set-context cfc --user=user</div><div class="line">kubectl config use-context cfc</div></pre></td></tr></table></figure>
-<h2 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">private</span> KubernetesClient client;</div><div class="line"></div><div class="line"><span class="meta">@Before</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectTest</span><span class="params">()</span></span>&#123;</div><div class="line">    Config config = <span class="keyword">new</span> ConfigBuilder().withMasterUrl(<span class="string">"https://9.111.96.159:8001"</span>)</div><div class="line">               .withTrustCerts(<span class="keyword">true</span>)</div><div class="line">               .withCaCertFile(Thread.currentThread().getContextClassLoader().getResource(<span class="string">""</span>).getPath()+<span class="string">"k8s/staging/ca.crt"</span>)</div><div class="line">               .withClientCertFile(Thread.currentThread().getContextClassLoader().getResource(<span class="string">""</span>).getPath()+<span class="string">"k8s/staging/kubecfg.crt"</span>)</div><div class="line">               .withClientKeyFile(Thread.currentThread().getContextClassLoader().getResource(<span class="string">""</span>).getPath()+<span class="string">"k8s/staging/kubecfg.key"</span>)</div><div class="line">               .build();</div><div class="line">     client = <span class="keyword">new</span> DefaultKubernetesClient(config);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listNameSpaceTest</span><span class="params">()</span></span>&#123;</div><div class="line">	NamespaceList namespaceList = client.namespaces().list();</div><div class="line">	<span class="keyword">for</span>(Namespace namespace:namespaceList.getItems())&#123;</div><div class="line">		System.out.println(namespace.getMetadata().getName());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/25/IBM-Cloud-private介绍/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="tunny880105@126.com">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/blog/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Tunny Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Tunny Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/10/25/IBM-Cloud-private介绍/" itemprop="url">
-                  IBM Cloud private介绍
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T20:15:18+08:00">
-                2017-10-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#至少三台CentOS7.2机器</span></div><div class="line"></div><div class="line"><span class="comment">#每台机器关闭防火墙</span></div><div class="line">setenforce <span class="number">0</span></div><div class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</div><div class="line"></div><div class="line"><span class="comment"># 安装docker</span></div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo <span class="string">'&#123;"insecure-registries":["0.0.0.0/0"]&#125;'</span>&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line"></div><div class="line"><span class="comment"># sysctl vm.max_map_count</span></div><div class="line">sysctl vm.max_map_count</div><div class="line">sysctl -w vm.max_map_count=<span class="number">262144</span></div><div class="line">echo <span class="string">"vm.max_map_count=262144"</span>&gt;&gt;/etc/sysctl.conf</div><div class="line"></div><div class="line"><span class="comment"># 拉取installer镜像</span></div><div class="line">docker pull ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span></div><div class="line"></div><div class="line">mkdir -p /opt/ibm-cloud-private-ce<span class="number">-1.2</span><span class="number">.0</span></div><div class="line">cd /opt/ibm-cloud-private-ce<span class="number">-1.2</span><span class="number">.0</span></div><div class="line">docker run -e LICENSE=accept -v <span class="string">"$(pwd)"</span>:/data ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span> cp -r cluster /data</div><div class="line"></div><div class="line"><span class="comment">#配置</span></div><div class="line">vim config.yaml</div><div class="line">ansible_user: root</div><div class="line">ansible_ssh_pass: dintern065754</div><div class="line">ansible_ssh_common_args: <span class="string">"-oPubkeyAuthentication=no"</span></div><div class="line"></div><div class="line">vim hosts</div><div class="line">[master]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span></div><div class="line"></div><div class="line">[worker]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.83</span></div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.84</span></div><div class="line"></div><div class="line">[proxy]</div><div class="line"><span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span></div><div class="line"></div><div class="line">docker run -e LICENSE=accept --net=host -t -v <span class="string">"$(pwd)"</span>:/installer/cluster ibmcom/cfc-installer:<span class="number">1.2</span><span class="number">.0</span> install -vvv</div><div class="line"></div><div class="line">UI URL <span class="keyword">is</span> https://master_ip:<span class="number">8443</span> , default username/password <span class="keyword">is</span> admin/admin</div></pre></td></tr></table></figure>
-<h4 id="配置kubectl客户端"><a href="#配置kubectl客户端" class="headerlink" title="配置kubectl客户端"></a>配置kubectl客户端</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1<span class="number">.6</span><span class="number">.1</span>/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line"><span class="comment">#这些配置信息可以在UI中获得</span></div><div class="line">kubectl config set-cluster cfc --server=https://<span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span>:<span class="number">8001</span> --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div></pre></td></tr></table></figure>
-<h4 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装docker</span></div><div class="line">wget -qO- https://get.docker.com/ | sh</div><div class="line">mkdir /etc/docker</div><div class="line">echo <span class="string">'&#123;"insecure-registries":["0.0.0.0/0"]&#125;'</span>&gt;/etc/docker/daemon.json</div><div class="line">systemctl enable docker &amp;&amp; systemctl start docker</div><div class="line"><span class="comment">#如果是集群中的work node则不需要添加</span></div><div class="line">echo <span class="string">"&lt;master_ip&gt; master.cfc"</span>&gt;&gt;/etc/hosts</div><div class="line">docker login master.cfc:<span class="number">8500</span></div><div class="line">admin/admin</div><div class="line">docker pull jenkins</div><div class="line">docker tag jenkins master.cfc:<span class="number">8500</span>/default/jenkins</div><div class="line">docker push master.cfc:<span class="number">8500</span>/default/jenkins</div></pre></td></tr></table></figure>
-<h4 id="LDAP配置"><a href="#LDAP配置" class="headerlink" title="LDAP配置"></a>LDAP配置</h4><p><a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/installing/configure_ldap.html" target="_blank" rel="external">https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/installing/configure_ldap.html</a><br><a href="https://developer.ibm.com/opentech/2015/08/14/configuring-keystone-with-ibms-bluepages-ldap/" target="_blank" rel="external">https://developer.ibm.com/opentech/2015/08/14/configuring-keystone-with-ibms-bluepages-ldap/</a></p>
-<h4 id="Helm应用"><a href="#Helm应用" class="headerlink" title="Helm应用"></a>Helm应用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">yum install -y socat</div><div class="line"><span class="comment">#配置kubectl</span></div><div class="line">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1<span class="number">.6</span><span class="number">.1</span>/bin/linux/amd64/kubectl</div><div class="line">chmod +x ./kubectl</div><div class="line">mv ./kubectl /usr/local/bin/kubectl</div><div class="line"><span class="comment">#这些配置信息可以在UI中获得</span></div><div class="line">kubectl config set-cluster cfc --server=https://<span class="number">10.3</span><span class="number">.0</span><span class="number">.82</span>:<span class="number">8001</span> --insecure-skip-tls-verify=true</div><div class="line">kubectl config set-context cfc --cluster=cfc</div><div class="line">kubectl config set-credentials user --token=&lt;token&gt;</div><div class="line">kubectl config set-context cfc --user=user --namespace=default</div><div class="line">kubectl config use-context cfc</div><div class="line"></div><div class="line">docker run -t --entrypoint=/bin/cp -v /usr/local/bin:/data ibmcom/helm:v2<span class="number">.4</span><span class="number">.1</span>  /helm /data/</div><div class="line">mkdir -p /var/lib/helm; export HELM_HOME=/var/lib/helm</div><div class="line">helm init --client-only</div><div class="line">helm version</div><div class="line">helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/</div><div class="line">helm search -l</div><div class="line">helm install --name=my-wordpress stable/wordpress</div><div class="line">helm list</div><div class="line">helm delete my-wordpress --purge</div><div class="line"></div><div class="line"><span class="comment">#创建Helm Chart</span></div><div class="line"><span class="comment">#创建本地仓库</span></div><div class="line">mkdir charts</div><div class="line">helm serve -–address <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8879</span> -–repo-path ./charts</div><div class="line"></div><div class="line">helm create tomcat</div><div class="line">tree tomcat</div><div class="line">tomcat</div><div class="line"> |-- charts</div><div class="line"> |-- Chart.yaml</div><div class="line"> |-- templates</div><div class="line"> |   |-- deployment.yaml</div><div class="line"> |   |-- _helpers.tpl</div><div class="line"> |   |-- NOTES.txt</div><div class="line"> |   `-- service.yaml</div><div class="line"> `-- values.yaml</div><div class="line">helm lint --strict tomcat</div><div class="line">helm package tomcat</div><div class="line"></div><div class="line">mkdir tomcat</div><div class="line">mv tomcat<span class="number">-0.1</span><span class="number">.0</span>.tgz fantastic-charts/</div><div class="line">helm repo index fantastic-charts –url http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8879</span></div><div class="line">helm repo add fantastic-charts http://<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">8879</span></div><div class="line">helm repo list</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/24/Dockerfile详解/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="tunny880105@126.com">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/blog/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Tunny Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Tunny Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/10/24/Dockerfile详解/" itemprop="url">
+                <a class="post-title-link" href="/blog/2017/10/24/Dockerfile%E8%AF%A6%E8%A7%A3/" itemprop="url">
                   Dockerfile详解
                 </a>
               
@@ -809,9 +565,9 @@
       
         
           
-            <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">FROM ubuntu:14.04</div><div class="line">MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;</div><div class="line"></div><div class="line">RUN apt-get update \</div><div class="line">  &amp;&amp; apt-get install openssh-server  -y \</div><div class="line">  &amp;&amp; rm -rf /var/lib/apt/lists/*</div><div class="line"></div><div class="line">ADD apache-maven-3.2.3.tar.gz /opt/</div><div class="line">ADD jdk-8u121-linux-x64.tar.gz /opt/</div><div class="line">COPY node-v6.11.1-linux-x64 /opt/node-v6.11.1</div><div class="line">COPY settings.xml /opt/apache-maven-3.2.3/conf/</div><div class="line"></div><div class="line">ENV MAVEN_HOME  /opt/apache-maven-3.2.3</div><div class="line">ENV JAVA_HOME  /opt/jdk1.8.0_121</div><div class="line">ENV NODE_HOME /opt/node-v6.11.1</div><div class="line">ENV CLASSPATH $JAVA_HOME/lib</div><div class="line">ENV PATH $MAVEN_HOME/bin:$JAVA_HOME/bin:$NODE_HOME/bin:$PATH</div><div class="line"></div><div class="line">ARG PASSWORD=passw0rd</div><div class="line"></div><div class="line"># config ssh</div><div class="line">RUN mkdir /var/run/sshd \</div><div class="line">    &amp;&amp; echo &quot;root:$PASSWORD&quot; | chpasswd \</div><div class="line">    &amp;&amp; sed -i &apos;s/PermitRootLogin without-password/PermitRootLogin yes/&apos; /etc/ssh/sshd_config</div><div class="line"></div><div class="line">EXPOSE 22</div><div class="line"></div><div class="line">RUN echo &quot; This container openes SSH service with root/$PASSWORD to login.&quot;</div><div class="line"></div><div class="line">CMD [&quot;/usr/sbin/sshd&quot;, &quot;-D&quot;]</div></pre></td></tr></table></figure>
+            <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu:14.04</span><br><span class="line">MAINTAINER Yu Chao &lt;chaochaoyuyu@126.com&gt;</span><br><span class="line"></span><br><span class="line">RUN apt-get update \</span><br><span class="line">  &amp;&amp; apt-get install openssh-server  -y \</span><br><span class="line">  &amp;&amp; rm -rf /var/lib/apt/lists/*</span><br><span class="line"></span><br><span class="line">ADD apache-maven-3.2.3.tar.gz /opt/</span><br><span class="line">ADD jdk-8u121-linux-x64.tar.gz /opt/</span><br><span class="line">COPY node-v6.11.1-linux-x64 /opt/node-v6.11.1</span><br><span class="line">COPY settings.xml /opt/apache-maven-3.2.3/conf/</span><br><span class="line"></span><br><span class="line">ENV MAVEN_HOME  /opt/apache-maven-3.2.3</span><br><span class="line">ENV JAVA_HOME  /opt/jdk1.8.0_121</span><br><span class="line">ENV NODE_HOME /opt/node-v6.11.1</span><br><span class="line">ENV CLASSPATH $JAVA_HOME/lib</span><br><span class="line">ENV PATH $MAVEN_HOME/bin:$JAVA_HOME/bin:$NODE_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line">ARG PASSWORD=passw0rd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> config ssh</span></span><br><span class="line">RUN mkdir /var/run/sshd \</span><br><span class="line">    &amp;&amp; echo "root:$PASSWORD" | chpasswd \</span><br><span class="line">    &amp;&amp; sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">EXPOSE 22</span><br><span class="line"></span><br><span class="line">RUN echo " This container openes SSH service with root/$PASSWORD to login."</span><br><span class="line"></span><br><span class="line">CMD ["/usr/sbin/sshd", "-D"]</span><br></pre></td></tr></table></figure>
 <h4 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h4><p>语法： FROM <code>&lt;image&gt;:&lt;tag&gt;</code><br>解释：设置要制作的镜像基于哪个镜像，FROM指令必须是整个Dockerfile的第一个指令</p>
-<h4 id="MAINTAINER"><a href="#MAINTAINER" class="headerlink" title="MAINTAINER"></a>MAINTAINER</h4><p>语法：MAINTAINER <name><br>解释：MAINTAINER指令允许你给将要制作的镜像设置作者信息</name></p>
+<h4 id="MAINTAINER"><a href="#MAINTAINER" class="headerlink" title="MAINTAINER"></a>MAINTAINER</h4><p>语法：MAINTAINER <name><br>解释：MAINTAINER指令允许你给将要制作的镜像设置作者信息</p>
 <h4 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h4><p>语法：</p>
 <ul>
 <li>RUN <command>        #将会调用/bin/sh -c <command></li>
@@ -821,22 +577,22 @@
 <ul>
 <li>CMD [“executable”, “param1”, “param2”]    #将会调用exec执行，首选方式</li>
 <li>CMD [“param1”, “param2”]        #当使用ENTRYPOINT指令时，为该指令传递默认参数</li>
-<li>CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行<br>解释：CMD指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个CMD指令，则只有最后一个CMD指令有效。当出现ENTRYPOINT指令时，CMD中定义的内容会作为ENTRYPOINT指令的默认参数，也就是说可以使用CMD指令给ENTRYPOINT传递参数。<br>注意：RUN和CMD都是执行命令，他们的差异在于RUN中定义的命令会在执行docker build命令创建镜像时执行，而CMD中定义的命令会在执行docker run命令运行镜像时执行，另外使用第一种语法也就是调用exec执行时，命令必须为绝对路径。</param2></param1></li>
+<li>CMD <command> [ <param1>|<param2> ]        #将会调用/bin/sh -c执行<br>解释：CMD指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个CMD指令，则只有最后一个CMD指令有效。当出现ENTRYPOINT指令时，CMD中定义的内容会作为ENTRYPOINT指令的默认参数，也就是说可以使用CMD指令给ENTRYPOINT传递参数。<br>注意：RUN和CMD都是执行命令，他们的差异在于RUN中定义的命令会在执行docker build命令创建镜像时执行，而CMD中定义的命令会在执行docker run命令运行镜像时执行，另外使用第一种语法也就是调用exec执行时，命令必须为绝对路径。</li>
 </ul>
-<h4 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h4><p>语法：EXPOSE <port> [ …]<br>解释：EXPOSE指令用来告诉Docker这个容器在运行时会监听哪些端口，Docker在连接不同的容器(使用–link参数)时使用这些信息。</port></p>
-<h4 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h4><p>语法：ENV <key> <value><br>解释：ENV指令用于设置环境变量，在Dockerfile中这些设置的环境变量也会影响到RUN指令，当运行生成的镜像时这些环境变量依然有效，如果需要在运行时更改这些环境变量可以在运行docker run时添加–env <key>=<value>参数来修改。<br>注意：最好不要定义那些可能和系统预定义的环境变量冲突的名字，否则可能会产生意想不到的结果。</value></key></value></key></p>
-<h4 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h4><p>语法：ADD <src> <dest><br>解释：ADD指令用于从指定路径拷贝一个文件或目录到容器的指定路径中，<src>是一个文件或目录的路径，也可以是一个url，路径是相对于该Dockerfile文件所在位置的相对路径，<dest>是目标容器的一个绝对路径，例如/home/yooke/Docker/Dockerfile这个文件中定义的，那么ADD /data.txt /db/指令将会尝试拷贝文件从/home/yooke/Docker/data.txt到将要生成的容器的/db/data.txt，且文件或目录的属组和属主分别为uid和gid为0的用户和组，如果是通过url方式获取的文件，则权限是600。<br>注意：* 如果执行docker build – &lt; somefile即通过标准输入来创建时，ADD指令只支持url方式，另外如果url需要认证，则可以通过RUN wget …或RUN curl …来完成，ADD指令不支持认证。</dest></src></dest></src></p>
+<h4 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h4><p>语法：EXPOSE <port> [ …]<br>解释：EXPOSE指令用来告诉Docker这个容器在运行时会监听哪些端口，Docker在连接不同的容器(使用–link参数)时使用这些信息。</p>
+<h4 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h4><p>语法：ENV <key> <value><br>解释：ENV指令用于设置环境变量，在Dockerfile中这些设置的环境变量也会影响到RUN指令，当运行生成的镜像时这些环境变量依然有效，如果需要在运行时更改这些环境变量可以在运行docker run时添加–env <key>=<value>参数来修改。<br>注意：最好不要定义那些可能和系统预定义的环境变量冲突的名字，否则可能会产生意想不到的结果。</p>
+<h4 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h4><p>语法：ADD <src> <dest><br>解释：ADD指令用于从指定路径拷贝一个文件或目录到容器的指定路径中，<src>是一个文件或目录的路径，也可以是一个url，路径是相对于该Dockerfile文件所在位置的相对路径，<dest>是目标容器的一个绝对路径，例如/home/yooke/Docker/Dockerfile这个文件中定义的，那么ADD /data.txt /db/指令将会尝试拷贝文件从/home/yooke/Docker/data.txt到将要生成的容器的/db/data.txt，且文件或目录的属组和属主分别为uid和gid为0的用户和组，如果是通过url方式获取的文件，则权限是600。<br>注意：* 如果执行docker build – &lt; somefile即通过标准输入来创建时，ADD指令只支持url方式，另外如果url需要认证，则可以通过RUN wget …或RUN curl …来完成，ADD指令不支持认证。</p>
 <ul>
-<li><src>路径必须与Dockerfile在同级目录或子目录中，例如不能使用ADD ../somepath，因为在执行docker build时首先做的就是把Dockerfile所在目录包含子目录发送给docker的守护进程。</src></li>
-<li>如果<src>是一个url且<dest>不是以”/“结尾，则会下载文件并重命名为<dest>。</dest></dest></src></li>
-<li>如果<src>是一个url且<dest>以“/”结尾，则会下载文件到<dest>/<filename>，url必须是一个正常的路径形式，“<a href="http://example.com”像这样的url是不能正常工作的。" target="_blank" rel="external">http://example.com”像这样的url是不能正常工作的。</a></filename></dest></dest></src></li>
-<li>如果<src>是一个本地的压缩包且<dest>是以“/”结尾的目录，则会调用“tar -x”命令解压缩，如果<dest>有同名文件则覆盖，但<src>是一个url时不会执行解压缩。</src></dest></dest></src></li>
+<li><src>路径必须与Dockerfile在同级目录或子目录中，例如不能使用ADD ../somepath，因为在执行docker build时首先做的就是把Dockerfile所在目录包含子目录发送给docker的守护进程。</li>
+<li>如果<src>是一个url且<dest>不是以”/“结尾，则会下载文件并重命名为<dest>。</li>
+<li>如果<src>是一个url且<dest>以“/”结尾，则会下载文件到<dest>/<filename>，url必须是一个正常的路径形式，“<a href="http://example.com”像这样的url是不能正常工作的。" target="_blank" rel="noopener">http://example.com”像这样的url是不能正常工作的。</a></li>
+<li>如果<src>是一个本地的压缩包且<dest>是以“/”结尾的目录，则会调用“tar -x”命令解压缩，如果<dest>有同名文件则覆盖，但<src>是一个url时不会执行解压缩。</li>
 </ul>
-<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>语法：COPY <src> <dest><br>解释：用法与ADD相同，不过<src>不支持使用url，所以在使用docker build – &lt; somefile时该指令不能使用。</src></dest></src></p>
+<h4 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h4><p>语法：COPY <src> <dest><br>解释：用法与ADD相同，不过<src>不支持使用url，所以在使用docker build – &lt; somefile时该指令不能使用。</p>
 <h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>语法：</p>
 <ul>
 <li>ENTRYPOINT [“executable”, “param1”, “param2”]        #将会调用exec执行，首选方式</li>
-<li>ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行<br>解释：ENTRYPOINT指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个ENTRYPOINT指令，则只有最后一个指令有效。ENTRYPOINT指令中指定的命令(exec执行的方式)可以通过docker run来传递参数，例如docker run <images> -l启动的容器将会把-l参数传递给ENTRYPOINT指令定义的命令并会覆盖CMD指令中定义的默认参数(如果有的话)，但不会覆盖该指令定义的参数，例如ENTRYPOINT [“ls”,”-a”]，CMD [“/etc”],当通过docker run <code>image</code>启动容器时该容器会运行ls -a /etc命令，当使用docker run <code>image</code> -l启动时该容器会运行ls -a -l命令，-l参数会覆盖CMD指令中定义的/etc参数。<br>注意：</images></li>
+<li>ENTRYPOINT command param1 param2             #将会调用/bin/sh -c执行<br>解释：ENTRYPOINT指令中指定的命令会在镜像运行时执行，在Dockerfile中只能存在一个，如果使用了多个ENTRYPOINT指令，则只有最后一个指令有效。ENTRYPOINT指令中指定的命令(exec执行的方式)可以通过docker run来传递参数，例如docker run <images> -l启动的容器将会把-l参数传递给ENTRYPOINT指令定义的命令并会覆盖CMD指令中定义的默认参数(如果有的话)，但不会覆盖该指令定义的参数，例如ENTRYPOINT [“ls”,”-a”]，CMD [“/etc”],当通过docker run <code>image</code>启动容器时该容器会运行ls -a /etc命令，当使用docker run <code>image</code> -l启动时该容器会运行ls -a -l命令，-l参数会覆盖CMD指令中定义的/etc参数。<br>注意：</li>
 <li>当使用ENTRYPOINT指令时生成的镜像运行时只会执行该指令指定的命令。</li>
 <li>当出现ENTRYPOINT指令时CMD指令只可能(当ENTRYPOINT指令使用exec方式执行时)被当做ENTRYPOINT指令的参数使用，其他情况则会被忽略。</li>
 </ul>
@@ -852,7 +608,7 @@
 <li>ONBUILD指令不允许嵌套，例如ONBUILD ONBUILD ADD . /data是不允许的。</li>
 <li>ONBUILD指令不会执行其定义的FROM或MAINTAINER指令。</li>
 </ul>
-<h4 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h4><p>语法： ARG <name>[=default value]<br>解释：ARG指令定义了一个变量，能让用户可以在构建期间使用docker build命令和其参数–build-arg =对这个变量赋值。如果用户指定了一个构建参数没有定义在Dockerfile的话，将输出错误。</name></p>
+<h4 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h4><p>语法： ARG <name>[=default value]<br>解释：ARG指令定义了一个变量，能让用户可以在构建期间使用docker build命令和其参数–build-arg =对这个变量赋值。如果用户指定了一个构建参数没有定义在Dockerfile的话，将输出错误。</p>
 
           
         
@@ -891,7 +647,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/10/24/个人简历/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/05/08/Swarm-Mode%E7%A0%94%E7%A9%B6/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -916,246 +672,7 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/10/24/个人简历/" itemprop="url">
-                  个人简历
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T14:07:25+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><ul>
-<li>俞超</li>
-<li>J2EE高级工程师/云平台架构师 IBM</li>
-<li>男 30岁 硕士 5年工作经验 宁波</li>
-<li>18357417569 chaochaoyuyu@126.com</li>
-<li><a href="https://tunnyblock.github.io/blog/" target="_blank" rel="external">个人博客</a></li>
-</ul>
-<h2 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h2><ul>
-<li>IBM 2013.07-至今 J2EE软件工程师-云平台架构师</li>
-<li>浙江大华 2012.02-2013.06 J2EE软件工程师</li>
-</ul>
-<h2 id="教育经验"><a href="#教育经验" class="headerlink" title="教育经验"></a>教育经验</h2><ul>
-<li>北京航空航天大学 2009.09-2012.02 硕士 生物医学工程</li>
-<li>北京航空航天大学 2005.09-2009.06 本科 生物医学工程</li>
-</ul>
-<h2 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h2><h3 id="DevOps-PaaS-2017-07-至今-架构师"><a href="#DevOps-PaaS-2017-07-至今-架构师" class="headerlink" title="DevOps PaaS 2017.07-至今 架构师"></a>DevOps PaaS 2017.07-至今 架构师</h3><h4 id="项目描述"><a href="#项目描述" class="headerlink" title="项目描述"></a>项目描述</h4><p>IBM CDL DevOps PaaS平台，整合部门内现有的DevOps实践，打造一个统一的、通用的DevOps平台</p>
-<ul>
-<li>可视化的构建、部署、运维流水线，随时随地执行发布任务</li>
-<li>结合git flow分支管理实践，实现构建、部署结果的个性化统计</li>
-</ul>
-<h4 id="负责内容"><a href="#负责内容" class="headerlink" title="负责内容"></a>负责内容</h4><ul>
-<li>DevOps PaaS的业务分析和整体框架设计</li>
-<li>DevOps PaaS底层架构和上层Portal的技术造型</li>
-<li>动态生成Tool Chain方案</li>
-<li>DevOps PaaS数据库设计</li>
-<li>基础镜像的Dockerfile编写</li>
-</ul>
-<h4 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h4><ul>
-<li>Spring/Spring MVC</li>
-<li>JDBCTemplate/Mybatis</li>
-<li>Redis</li>
-<li>MySQL</li>
-<li>Docker/Kubernetes</li>
-<li>Jenkins</li>
-</ul>
-<h3 id="苏宁容器云管平台-2017-03-2017-05-高级工程师"><a href="#苏宁容器云管平台-2017-03-2017-05-高级工程师" class="headerlink" title="苏宁容器云管平台 2017.03-2017.05 高级工程师"></a>苏宁容器云管平台 2017.03-2017.05 高级工程师</h3><h4 id="项目描述-1"><a href="#项目描述-1" class="headerlink" title="项目描述"></a>项目描述</h4><ul>
-<li>苏宁私有云平台PCP，考虑加入容器技术，1期计划将JBoss的无状态应用迁移到容器里，期望更灵活地发布版本，提高资源的使用率</li>
-<li>苏宁私有云平台PCP目前有一个PaaS模块作为服务编排在使用，比如Ngnix+JBoss的组合，Apache+JBoss的组合等，但这套编排引擎不够灵活，无法人工干预取消，跳过，意外中断后也无法再次启动</li>
-</ul>
-<h4 id="负责内容-1"><a href="#负责内容-1" class="headerlink" title="负责内容"></a>负责内容</h4><ul>
-<li>封装docker swarm API供平台调用</li>
-<li>基于苏宁PCP平台开发Swarm Service创建的逻辑</li>
-<li>业务Dockerfile编写，实现Docker Registry的API操作</li>
-<li>设计基于Activiti的服务编排引擎，实现根据模板进行任务分发，动态调整执行顺序</li>
-</ul>
-<h4 id="使用技术-1"><a href="#使用技术-1" class="headerlink" title="使用技术"></a>使用技术</h4><ul>
-<li>Spring/Spring MVC</li>
-<li>Mybatis</li>
-<li>Redis</li>
-<li>MySQL</li>
-<li>Swarm</li>
-<li>Activiti</li>
-</ul>
-<h3 id="DCloud-2016-08-2017-02-架构师"><a href="#DCloud-2016-08-2017-02-架构师" class="headerlink" title="DCloud 2016.08-2017.02 架构师"></a>DCloud 2016.08-2017.02 架构师</h3><h4 id="项目描述-2"><a href="#项目描述-2" class="headerlink" title="项目描述"></a>项目描述</h4><p>IBM CDL CaaS容器平台，底层引擎切使用Kubernetes,存储切换到Ceph。主要提供以下内容：</p>
-<ul>
-<li>无状态的容器服务，有状态的容器服务</li>
-<li>存储卷管理</li>
-<li>日志统一处理</li>
-<li>基础的CI/CD功能</li>
-<li>镜像管理</li>
-</ul>
-<h4 id="负责内容-2"><a href="#负责内容-2" class="headerlink" title="负责内容"></a>负责内容</h4><ul>
-<li>基于Kubernetes的CaaS集群搭建</li>
-<li>Fabric8io Kubernetes SDK实现与Kubernetes的交互</li>
-<li>沿用第一期的Habor Registry,基于secret实现Kubernetes Worker Node镜像的拉取</li>
-<li>基于docker stats api与cAdvisor组件实现Kubernetes集群的监控，通过参数动态调整定时任务的执行周期</li>
-<li>基于shellinabox实现web端操作容器的Terminal</li>
-<li>基于Ceph的存储集群搭建，基于go-ceph封装Ceph RBD的Restful API</li>
-<li>基于Ceph存储，实现Kubernetes Persistent Volume的对接，PVC的分配功能</li>
-<li>基于ELK的日志统一收集</li>
-<li>基于Jenkins的CI/CD平台搭建</li>
-</ul>
-<h4 id="使用技术-2"><a href="#使用技术-2" class="headerlink" title="使用技术"></a>使用技术</h4><ul>
-<li>Spring/Spring MVC</li>
-<li>JDBCTemplate/Mybatis</li>
-<li>Redis</li>
-<li>RabbitMQ</li>
-<li>MySQL</li>
-<li>Kubernetes</li>
-<li>Ceph</li>
-</ul>
-<h3 id="XCloud-2015-07-2016-01-架构师"><a href="#XCloud-2015-07-2016-01-架构师" class="headerlink" title="XCloud 2015.07 - 2016.01 架构师"></a>XCloud 2015.07 - 2016.01 架构师</h3><h4 id="项目描述-3"><a href="#项目描述-3" class="headerlink" title="项目描述"></a>项目描述</h4><ul>
-<li>IBM CDL基于Openstack的私有云管理，包括如下功能:</li>
-<li>虚拟机管理，包括创建，开/关机，重启，远程控制，修改配置，删除</li>
-<li>镜像管理，包括公有镜像管理，私有快照管理</li>
-<li>Floating IP管理</li>
-<li>群组划分，和组内资源共享</li>
-</ul>
-<h4 id="负责内容-3"><a href="#负责内容-3" class="headerlink" title="负责内容"></a>负责内容</h4><ul>
-<li>基于Openstack Kilo（后续升级为Liberty）版本搭建的底层IaaS平台</li>
-<li>利用Openstack4j组件实现Openstack各个对象的操作</li>
-<li>使用Quartz调度任务，实现虚拟机状态的自动管理</li>
-</ul>
-<h4 id="使用技术-3"><a href="#使用技术-3" class="headerlink" title="使用技术"></a>使用技术</h4><ul>
-<li>Spring/Spring MVC</li>
-<li>JDBCTemplate/Mybatis</li>
-<li>Redis</li>
-<li>RabbitMQ</li>
-<li>MySQL</li>
-<li>Openstack/Openstack4j</li>
-</ul>
-<h3 id="Mobile-Cloud-2013-12-2014-06-架构师"><a href="#Mobile-Cloud-2013-12-2014-06-架构师" class="headerlink" title="Mobile Cloud 2013.12 - 2014.06 架构师"></a>Mobile Cloud 2013.12 - 2014.06 架构师</h3><h4 id="项目描述-4"><a href="#项目描述-4" class="headerlink" title="项目描述"></a>项目描述</h4><p>IBM CDL 手机云测试平台，类似于Testin的平台，提供Mobile测试云，包括如下功能:</p>
-<ul>
-<li>Android真机的申请和远程控制</li>
-<li>iPhone真机的申请和远程控制</li>
-<li>Linux虚拟机的创建和Android真机的挂载</li>
-<li>Mac虚拟机的创建和iPhone真机的挂载</li>
-</ul>
-<h4 id="负责内容-4"><a href="#负责内容-4" class="headerlink" title="负责内容"></a>负责内容</h4><ul>
-<li>利用VMware USB Driver接口，动态实现手机与虚拟机挂载和断开</li>
-<li>利用noVNC，google adb和libmobiledevice实现Android，iPhone，iPad的Web远程操作</li>
-<li>基于RabbitMQ解耦前台申请和后台资源的操控，包括手机与虚拟机的挂载，断开等操作</li>
-</ul>
-<h4 id="使用技术-4"><a href="#使用技术-4" class="headerlink" title="使用技术"></a>使用技术</h4><ul>
-<li>Spring/Spring MVC</li>
-<li>JDBCTemplate/Mybatis</li>
-<li>RabbitMQ</li>
-<li>DB2</li>
-<li>VMWare Perl SDK</li>
-</ul>
-<h2 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h2><p>具有较强的学习能力，对最新的开源框架有浓厚兴趣，目前在研究Openstack,Docker和Kubernetes等云计算前沿技术，对DevOps也有了解。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/05/08/Swarm-Mode研究/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="tunny880105@126.com">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/blog/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Tunny Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Tunny Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2017/05/08/Swarm-Mode研究/" itemprop="url">
+                <a class="post-title-link" href="/blog/2017/05/08/Swarm-Mode%E7%A0%94%E7%A9%B6/" itemprop="url">
                   Swarm Mode研究
                 </a>
               
@@ -1210,11 +727,10 @@
       
         
           
-            <h4 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h4><p>安装前准备<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">systemctl stop firewalld</div><div class="line">systemctl disable firewalld</div></pre></td></tr></table></figure></p>
-<p>自动化安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl -sSL https://get.docker.io | sh -</div><div class="line">systemctl enable docker.service</div><div class="line">systemctl start docker.service</div></pre></td></tr></table></figure></p>
-<h4 id="创建Swarm集群"><a href="#创建Swarm集群" class="headerlink" title="创建Swarm集群"></a>创建Swarm集群</h4><h5 id="创建管理节点"><a href="#创建管理节点" class="headerlink" title="创建管理节点"></a>创建管理节点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker swarm init --linsten-addr &lt;MANAGER-IP&gt;:&lt;PORT&gt;</div><div class="line">输出如下内容</div></pre></td></tr></table></figure>
-<h5 id="添加节点到集群"><a href="#添加节点到集群" class="headerlink" title="添加节点到集群"></a>添加节点到集群</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-<h5 id="验证集群（Manager节点上查看节点列表）"><a href="#验证集群（Manager节点上查看节点列表）" class="headerlink" title="验证集群（Manager节点上查看节点列表）"></a>验证集群（Manager节点上查看节点列表）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">##### 更新节点Label</div><div class="line">```shell</div><div class="line">docker node update --label-update security=high &lt;NODE_NAME&gt;</div></pre></td></tr></table></figure>
+            <h4 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h4><p>安装前准备<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure><br>自动化安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://get.docker.io | sh -</span><br><span class="line">systemctl enable docker.service</span><br><span class="line">systemctl start docker.service</span><br></pre></td></tr></table></figure></p>
+<h4 id="创建Swarm集群"><a href="#创建Swarm集群" class="headerlink" title="创建Swarm集群"></a>创建Swarm集群</h4><h5 id="创建管理节点"><a href="#创建管理节点" class="headerlink" title="创建管理节点"></a>创建管理节点</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker swarm init --linsten-addr &lt;MANAGER-IP&gt;:&lt;PORT&gt;</span><br><span class="line">输出如下内容</span><br></pre></td></tr></table></figure>
+<h5 id="添加节点到集群"><a href="#添加节点到集群" class="headerlink" title="添加节点到集群"></a>添加节点到集群</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="验证集群（Manager节点上查看节点列表）"><a href="#验证集群（Manager节点上查看节点列表）" class="headerlink" title="验证集群（Manager节点上查看节点列表）"></a>验证集群（Manager节点上查看节点列表）</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#### 更新节点Label</span></span></span><br><span class="line">```shell</span><br><span class="line">docker node update --label-update security=high &lt;NODE_NAME&gt;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1253,7 +769,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/01/15/Kubernetes集群搭建/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/2017/01/15/Kubernetes%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="tunny880105@126.com">
@@ -1278,7 +794,7 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2017/01/15/Kubernetes集群搭建/" itemprop="url">
+                <a class="post-title-link" href="/blog/2017/01/15/Kubernetes%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" itemprop="url">
                   Kubernetes集群搭建
                 </a>
               
@@ -1477,7 +993,7 @@
 <p>不建议在k8s的一个pod内运行相同应用的多个实例。也就是说一个Pod内不要运行2个或2个以上相同的镜像，因为容易造成端口冲突，而且Pod内的容器都是在同一个Node上的</p>
 <p> 一个Pod包含一个或者多个容器。</p>
 <p>Pod的YAML 描述方式:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> Pod</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> nginx</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  containers:</span></div><div class="line"><span class="attr">  - name:</span> nginx</div><div class="line"><span class="attr">    image:</span> <span class="string">"nginx"</span></div></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">"nginx"</span></span><br></pre></td></tr></table></figure>
 <p>运行如下命令就会创建Pod：</p>
 <pre><code>kubectl create -f ./nginx.yaml
 </code></pre><p>运行如下命令可以查看Pod状态：</p>
@@ -1487,7 +1003,7 @@
 </blockquote>
 <p>Replication 是复制的意思，用来解决Pod的线性扩容缩容问题，Replication Controller可以创建一个pod的多个副本，并且可以保证集群中该Pod的副本数量保持平衡。例如副本数量规定为10，如果某个pod挂了，数量变为9，那么Replication Controller会自动创建一个Pod，恢复到10个副本的水平。 多个副本可以在不同的Node中。</p>
 <p>Replication Controller的YAML描述方式:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="attr">apiVersion:</span> v1</div><div class="line"><span class="attr">kind:</span> ReplicationController</div><div class="line"><span class="attr">metadata:</span></div><div class="line"><span class="attr">  name:</span> nginx</div><div class="line"><span class="attr">spec:</span></div><div class="line"><span class="attr">  relicas:</span> <span class="number">2</span></div><div class="line"><span class="attr">  template:</span></div><div class="line"><span class="attr">    metada:</span></div><div class="line"><span class="attr">      labels:</span></div><div class="line"><span class="attr">        app:</span> nginx</div><div class="line"><span class="attr">    spec:</span></div><div class="line"><span class="attr">      containers:</span></div><div class="line"><span class="attr">      - name:</span> nginx</div><div class="line"><span class="attr">        image:</span> nginx</div><div class="line"><span class="attr">        ports:</span></div><div class="line"><span class="attr">        - containerPort:</span> <span class="number">80</span></div></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">relicas:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metada:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Replica Set</p>
 </blockquote>
@@ -1496,22 +1012,22 @@
 <p>Deployment</p>
 </blockquote>
 <p>部署表示用户对K8S集群的一次更新操作，部署是一个比RS应用模式更广的API对象，可以是创建一个新的服务，更新一个新的服务，也可以是滚动升级一个服务。滚动升级一个服务，实际是创建一个新的RS，然后逐渐将新RS中副本数增加到理想状态，将旧RS中的副本数减少到0的复合操作，这样一个复合操作用一个RS很难去描述，所以用一个更通用的Deployment来描述，以K8S的发展方向，未来对所有长期伺服型的业务的管理，都会通过Deployment来管理。</p>
-<p>Deployment的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: Deployment</div><div class="line">metadata:</div><div class="line">  name: nginx-deployment</div><div class="line">spec:</div><div class="line">  replicas: 2</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: nginx</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: nginx</div><div class="line">        image: nginx:1.7.9</div><div class="line">        ports:</div><div class="line">        - containerPort: 80</div><div class="line">        resources:</div><div class="line">          requests:</div><div class="line">            cpu: 400m</div></pre></td></tr></table></figure></p>
+<p>Deployment的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: extensions&#x2F;v1beta1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">spec:</span><br><span class="line">  replicas: 2</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:1.7.9</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br><span class="line">        resources:</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 400m</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Service</p>
 </blockquote>
 <p>RC，RS和Deployment只是保证了支撑服务的微服务Pod数量，但是没有解决如何访问这些服务的问题，一个Pod只是一个运行服务的实例，随时可能在一个节点上停止，在另一个节点以一个新的IP启动一个新的Pod，因此不能以确定的IP和端口号提供服务。要稳定地提供服务需要服务发现和负载均衡能力，服务发现完成的工作是针对客户端访问的服务，找到对应的后端服务实例。在K8S集群中，客户端需要访问的服务就是Service对象。每个Service会对应一个集群内部有效的虚拟IP，集群内部通过虚拟IP访问一个服务。在K8S集群中微服务的负载均衡是由Kube-proxy实现的。Kube-proxy是K8S集群内部的负载均衡器，它是一个分布式代理服务器，在K8S的每个节点都有一个，这个设计体现了它的伸缩性优势，需要访问的服务节点越多，提供负载均衡能力的Kube-proxy就越多，高可用节点也随之增多。与之相比，我们平时在服务器端做个反向代理做负载均衡，还要进一步解决反向代理的负载均衡和高可用问题。</p>
-<p>Service的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  name: nginx</div><div class="line">  labels:</div><div class="line">    app: nginx</div><div class="line">spec:</div><div class="line">  type: NodePort</div><div class="line">  selector:</div><div class="line">    app: nginx</div><div class="line">  ports:</div><div class="line">  - port: 80</div><div class="line">    targetPort: 80</div><div class="line">    nodePort: 30088</div></pre></td></tr></table></figure></p>
+<p>Service的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  type: NodePort</span><br><span class="line">  selector:</span><br><span class="line">    app: nginx</span><br><span class="line">  ports:</span><br><span class="line">  - port: 80</span><br><span class="line">    targetPort: 80</span><br><span class="line">    nodePort: 30088</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>DaemonSet</p>
 </blockquote>
 <p>长期伺服型和批处理型服务的核心在业务应用，可能有些节点运行多个同类业务的Pod,有些节点上又没有这类Pod运行，而后台支撑型服务的核心关注点在K8S集群中的节点（物理机或者虚拟机），要保证每个节点上都有一个此类Pod运行，节点可能是所有集群节点也可能是通过nodeSelector选定的一些特定节点。典型的后台支撑服务包括，存储、日志和监控等在每个节点上支持K8S集群运行的服务。</p>
-<p>DaemonSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">apiVersion: extensions/v1beta1</div><div class="line">kind: DaemonSet</div><div class="line">metadata:</div><div class="line">  name: tomcat-ds</div><div class="line">spec:</div><div class="line">  template:</div><div class="line">    metadata:</div><div class="line">      labels:</div><div class="line">        app: tomcat</div><div class="line">    spec:</div><div class="line">      containers:</div><div class="line">      - name: tomcat</div><div class="line">        image: tomcat:8.0.30-jre8</div><div class="line">        ports:</div><div class="line">        - containerPort: 8080</div></pre></td></tr></table></figure></p>
+<p>DaemonSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: extensions&#x2F;v1beta1</span><br><span class="line">kind: DaemonSet</span><br><span class="line">metadata:</span><br><span class="line">  name: tomcat-ds</span><br><span class="line">spec:</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: tomcat</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: tomcat</span><br><span class="line">        image: tomcat:8.0.30-jre8</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 8080</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>PetSet</p>
 </blockquote>
 <p>K8S在1.3版本里发布了Alpha版本的PetSet功能，RC和RS主要控制提供无状态服务的，其所控制的Pod的名字是随机设置的，一个Pod出故障了就被丢弃掉，在另一个地方重启一个新的Pod,名字变了，名字和启动在哪里不重要，重要的是Pod数；而PetSet是用来控制有状态服务，PetSet中每个Pod的名字都是事先确定的，不能更改。PetSet中Pod的名字的作用代表与Pod对应的状态。<br>对于RC和RS中的Pod,一般不挂载存储或者挂载共享存储，保存的是所有Pod共享的状态，对于PetSet中的Pod,每个Pod挂载自己独立的存储，如果一个Pod出现故障，从其他节点启动一个同样名字的Pod,要挂载上原来Pod的存储继续以它的状态提供服务。</p>
-<p>PetSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">apiVersion: apps/v1alpha1</div><div class="line">kind: PetSet</div><div class="line">metadata:</div><div class="line">name: web</div><div class="line">spec:</div><div class="line">serviceName: &quot;nginx&quot;</div><div class="line">replicas: 2</div><div class="line">template:</div><div class="line">  metadata:</div><div class="line">    labels:</div><div class="line">      app: nginx</div><div class="line">    annotations:</div><div class="line">      pod.alpha.kubernetes.io/initialized: &quot;true&quot;</div><div class="line">  spec:</div><div class="line">    terminationGracePeriodSeconds: 0</div><div class="line">    containers:</div><div class="line">    - name: nginx</div><div class="line">      image: gcr.io/google_containers/nginx-slim:0.8</div><div class="line">      ports:</div><div class="line">      - containerPort: 80</div><div class="line">        name: web</div><div class="line">      volumeMounts:</div><div class="line">      - name: www</div><div class="line">        mountPath: /usr/share/nginx/html</div><div class="line">volumeClaimTemplates:</div><div class="line">- metadata:</div><div class="line">    name: www</div><div class="line">    annotations:</div><div class="line">      volume.alpha.kubernetes.io/storage-class: anything</div><div class="line">  spec:</div><div class="line">    accessModes: [ &quot;ReadWriteOnce&quot; ]</div><div class="line">    resources:</div><div class="line">      requests:</div><div class="line">        storage: 1Gi</div></pre></td></tr></table></figure></p>
+<p>PetSet的YAML描述方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps&#x2F;v1alpha1</span><br><span class="line">kind: PetSet</span><br><span class="line">metadata:</span><br><span class="line">name: web</span><br><span class="line">spec:</span><br><span class="line">serviceName: &quot;nginx&quot;</span><br><span class="line">replicas: 2</span><br><span class="line">template:</span><br><span class="line">  metadata:</span><br><span class="line">    labels:</span><br><span class="line">      app: nginx</span><br><span class="line">    annotations:</span><br><span class="line">      pod.alpha.kubernetes.io&#x2F;initialized: &quot;true&quot;</span><br><span class="line">  spec:</span><br><span class="line">    terminationGracePeriodSeconds: 0</span><br><span class="line">    containers:</span><br><span class="line">    - name: nginx</span><br><span class="line">      image: gcr.io&#x2F;google_containers&#x2F;nginx-slim:0.8</span><br><span class="line">      ports:</span><br><span class="line">      - containerPort: 80</span><br><span class="line">        name: web</span><br><span class="line">      volumeMounts:</span><br><span class="line">      - name: www</span><br><span class="line">        mountPath: &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br><span class="line">volumeClaimTemplates:</span><br><span class="line">- metadata:</span><br><span class="line">    name: www</span><br><span class="line">    annotations:</span><br><span class="line">      volume.alpha.kubernetes.io&#x2F;storage-class: anything</span><br><span class="line">  spec:</span><br><span class="line">    accessModes: [ &quot;ReadWriteOnce&quot; ]</span><br><span class="line">    resources:</span><br><span class="line">      requests:</span><br><span class="line">        storage: 1Gi</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Volume</p>
 </blockquote>
@@ -1532,8 +1048,7 @@
 </ul>
 </li>
 </ul>
-<p>PV的YAML描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">apiVersion: &quot;v1&quot;</div><div class="line">kind: &quot;PersistentVolume&quot;</div><div class="line">metadata:</div><div class="line"> name: &quot;gluster-default-volume&quot;</div><div class="line">spec:</div><div class="line"> capacity:</div><div class="line">    storage: &quot;8Gi&quot;</div><div class="line"> accessModes:</div><div class="line">    - &quot;ReadWriteMany&quot;</div><div class="line"> glusterfs:</div><div class="line">    endpoints: &quot;glusterfs-cluster&quot;</div><div class="line">    path: &quot;gluster_vol&quot;</div><div class="line">    readOnly: false</div><div class="line"> persistentVolumeReclaimPolicy: &quot;Recycle&quot;</div></pre></td></tr></table></figure></p>
-<p>PVC的YAML描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">apiVersion: &quot;v1&quot;</div><div class="line">kind: &quot;PersistentVolumeClaim&quot;</div><div class="line">metadata:</div><div class="line"> name: &quot;glusterfs-claim&quot;</div><div class="line">spec:</div><div class="line"> accessModes:</div><div class="line">    - &quot;ReadWriteMany&quot;</div><div class="line"> resources:</div><div class="line">    requests:</div><div class="line">     storage: &quot;8Gi&quot;</div></pre></td></tr></table></figure></p>
+<p>PV的YAML描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: &quot;v1&quot;</span><br><span class="line">kind: &quot;PersistentVolume&quot;</span><br><span class="line">metadata:</span><br><span class="line"> name: &quot;gluster-default-volume&quot;</span><br><span class="line">spec:</span><br><span class="line"> capacity:</span><br><span class="line">    storage: &quot;8Gi&quot;</span><br><span class="line"> accessModes:</span><br><span class="line">    - &quot;ReadWriteMany&quot;</span><br><span class="line"> glusterfs:</span><br><span class="line">    endpoints: &quot;glusterfs-cluster&quot;</span><br><span class="line">    path: &quot;gluster_vol&quot;</span><br><span class="line">    readOnly: false</span><br><span class="line"> persistentVolumeReclaimPolicy: &quot;Recycle&quot;</span><br></pre></td></tr></table></figure><br>PVC的YAML描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: &quot;v1&quot;</span><br><span class="line">kind: &quot;PersistentVolumeClaim&quot;</span><br><span class="line">metadata:</span><br><span class="line"> name: &quot;glusterfs-claim&quot;</span><br><span class="line">spec:</span><br><span class="line"> accessModes:</span><br><span class="line">    - &quot;ReadWriteMany&quot;</span><br><span class="line"> resources:</span><br><span class="line">    requests:</span><br><span class="line">     storage: &quot;8Gi&quot;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1606,7 +1121,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1617,7 +1132,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1657,7 +1172,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1666,12 +1181,12 @@
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
     NexT.Mist
   </a>
 </div>
