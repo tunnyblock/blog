@@ -308,7 +308,14 @@
       
         
           
-            <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>将easy-flow构建的工作流JSON解析成工作流定义、任务定义和任务关系</p>
+            <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>设计DAG工作流引擎需要解决的问题</p>
+<ul>
+<li>DAG任务如何切割</li>
+<li>任务的输入和输出如何保存</li>
+<li>任务的输入依赖上一级的输出如何处理</li>
+<li>条件判断的任务如何解决<br>将easy-flow构建的工作流JSON解析成工作流定义、任务定义和任务关系</li>
+</ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://www.cnblogs.com/gabry/p/12162272.html" target="_blank" rel="noopener">https://www.cnblogs.com/gabry/p/12162272.html</a></p>
 
           
         
